@@ -14,8 +14,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" />
-    
-    <title>Kute shop</title>
+    <style>
+    	/*@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+		.droid-arabic-kufi{font-family: 'Droid Arabic Kufi', serif;}*/
+		body{
+			/*font-family: 'droid-arabic-kufi', sans-serif;*/
+			font-family: tahoma;
+		}
+    </style>
+    <title>{{ \App\settings::where('name', 'title')->first()->value }}</title>
 </head>
 <body class="home">
 <!-- TOP BANNER -->
@@ -29,7 +36,7 @@
     </div>
 </div>-->
 
-@include('layouts.banner')
+@include('layouts.header')
 
 @yield('content')
 

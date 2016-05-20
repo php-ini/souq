@@ -11,14 +11,14 @@
                 <div class="homeslider">
                     <div class="content-slide">
                         <ul id="contenhomeslider">
-                          <li><img alt="Funky roots" src="{{ asset('data/slide.jpg') }}" title="Funky roots" /></li>
-                          <li><img alt="Funky roots" src="{{ asset('data/slide.jpg') }}" title="Funky roots" /></li>
-                          <li><img  alt="Funky roots" src="{{ asset('data/slide.jpg') }}" title="Funky roots" /></li>
+                          <li><img alt="Funky roots" src="http://2.bp.blogspot.com/-0tVheG8wkXo/TW7l5diIq7I/AAAAAAAAAZk/RA_G0MiAWw0/s1600/4.jpg" title="Funky roots" /></li>
+                          <li><img alt="Funky roots" src="https://az837918.vo.msecnd.net/publishedimages/offers/1057/en-CA/images/1/west-edmonton-mall-shopping-package-L-2.jpg" title="Funky roots" /></li>
+                          <li><img  alt="Funky roots" src="http://travelfashiongirl.com/wp-content/uploads/2014/03/Best-Shopping-Spots-Around-Paris.jpg" title="Funky roots" /></li>
                         </ul>
                     </div>
                 </div>
                 <div class="header-banner banner-opacity">
-                    <a href="#"><img alt="Funky roots" src="{{ asset('data/ads1.jpg') }}" /></a>
+                    <a href="#"><img alt="Funky roots" src="http://images02.oe24.at/8_Martina_Fasslaben_417772a.jpg/1.390.809" /></a>
                 </div>
             </div>
         </div>
@@ -33,8 +33,8 @@
                 <img alt="services" src="{{ asset('data/s1.png') }}" />
             </div>
             <div class="info">
-                <a href="#"><h3>Free Shipping</h3></a>
-                <span>On order over $200</span>
+                <a href="#"><h3>شحن مجانا</h3></a>
+                <span>شحن مجاني للمشتريات فوق 500 ريال</span>
             </div>
         </div>
         <div class="col-xs-6 col-sm-3 service-item">
@@ -42,8 +42,8 @@
                 <img alt="services" src="{{ asset('data/s2.png') }}" />
             </div>
             <div class="info">
-                <a href="#"><h3>30-day return</h3></a>
-                <span>Moneyback guarantee</span>
+                <a href="#"><h3>30 يوم ضمان</h3></a>
+                <span>ضمان استرجاع النقود خلال 30 يوم</span>
             </div>
         </div>
         <div class="col-xs-6 col-sm-3 service-item">
@@ -52,8 +52,8 @@
             </div>
             
             <div class="info" >
-                <a href="#"><h3>24/7 support</h3></a>
-                <span>Online consultations</span>
+                <a href="#"><h3>دعم فني 24/7</h3></a>
+                <span>استشارة متواجدة دائما</span>
             </div>
         </div>
         <div class="col-xs-6 col-sm-3 service-item">
@@ -61,8 +61,8 @@
                 <img alt="services" src="{{ asset('data/s4.png') }}" />
             </div>
             <div class="info">
-                <a href="#"><h3>SAFE SHOPPING</h3></a>
-                <span>Safe Shopping Guarantee</span>
+                <a href="#"><h3>تسوق أمن</h3></a>
+                <span>ضمان التسوق الامن</span>
             </div>
         </div>
     </div>
@@ -438,7 +438,7 @@
                             <li>
                                 <div class="count-down-time" data-countdown="2017/06/27"></div>
                                 <div class="left-block">
-                                    <a href="detail.html"><img class="img-responsive" alt="product" src="{{ asset('data/ld1.jpg') }}" /></a>
+                                    <a href="detail.html"><img class="img-responsive" alt="product" src="http://www.apexphonesllc.com/wp-content/uploads/2016/03/iphone6-hero-270x330.jpg" /></a>
                                     <div class="quick-view">
                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -460,7 +460,7 @@
                             <li>
                                 <div class="count-down-time" data-countdown="2017/06/27 9:20:00"></div>
                                 <div class="left-block">
-                                    <a href="detail.html"><img class="img-responsive" alt="product" src="{{ asset('data/ld2.jpg') }}" /></a>
+                                    <a href="detail.html"><img class="img-responsive" alt="product" src="https://s-media-cache-ak0.pinimg.com/736x/97/52/0b/97520bcc1ae4877463569d2f515d29f5.jpg" /></a>
                                     <div class="quick-view">
                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                             <a title="Add to compare" class="compare" href="#"></a>
@@ -482,7 +482,7 @@
                             <li>
                                 <div class="count-down-time" data-countdown="2017/06/27 9:20:00"></div>
                                 <div class="left-block">
-                                    <a href="detail.html"><img class="img-responsive" alt="product" src="{{ asset('data/ld3.jpg') }}" /></a>
+                                    <a href="detail.html"><img class="img-responsive" alt="product" src="http://www.epey.com/resim/47835/m_huawei-y6-7.jpg" /></a>
                                     <div class="quick-view">
                                             <a title="Add to my wishlist" class="heart" href="#"></a>
                                             <a title="Add to compare" class="compare" href="#"></a>
