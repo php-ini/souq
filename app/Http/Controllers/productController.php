@@ -14,6 +14,9 @@ class productController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+    	view()->share('image_url', 'http://perfectteamwork.com/');
+    }
     public function index()
     {
         //
@@ -21,12 +24,21 @@ class productController extends Controller
 	
 	public function home()
     {
-    	// die('sss');
-        return view('product.home');
+    	
+		// $seconds = \App\second::where('pid', 7)->take(10)->get();
+		// foreach($seconds as $second){
+        // $count = $second->thirds->toArray();
+		// echo"<pre>";print_r($count);
+		// }
+		//echo $count;
+		// exit;
+        return view('product.home', ['currency' => 'ريال']);
     }
 	
 	
-	
+	public function quick_view(){
+		return view('product.quick_view');
+	}
 	
 	
 

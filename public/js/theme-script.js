@@ -301,12 +301,13 @@
                 }
             })
         })
+        
         // Quick view
         $(document).on('click','.quick-view .search,a.quick-view',function(){
             var data = {
-
+			'_token': $("input[name='_token']").val()
             }
-            $.post('quick_view.html', data, function(response){
+            $.post('/quick_view', data, function(response){
                 $.fancybox(response, {
                   // fancybox API options
                   fitToView: false,

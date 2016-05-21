@@ -36,7 +36,7 @@ class second extends Model
      */
     public function thirds()
     {
-        return $this->hasMany('App\third');
+        return $this->hasMany('App\third', 'sid');
     }
 	
 	public function slugify($text = ""){ 

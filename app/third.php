@@ -14,7 +14,7 @@ class third extends Model
      *
      * @var string
      */
-    protected $table = 'secondlevel';
+    protected $table = 'thirdlevel';
 	
 	/**
      * Indicates if the model should be timestamped.
@@ -38,7 +38,7 @@ class third extends Model
 	    return $this->belongsTo('App\first', 'pid');
 	}
 	
-	public function slugify($text = ""){ 
+	public static function slugify($text = ""){ 
 	  // replace non letter or digits by -
 	  $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
 	
@@ -65,7 +65,7 @@ class third extends Model
 
 	public static function slug($id){
 		$third = third::findOrFail($id);
-		return $this->slugify($third->title ." ". $third->id);
+		return self::slugify($third->title ." ". $third->id);
 	}
 	
 }

@@ -32,7 +32,7 @@ class first extends Model
      */
     public function seconds()
     {
-        return $this->hasMany('App\second');
+        return $this->hasMany('App\second', 'pid');
     }
 	
 	public function slugify($text = ""){ 

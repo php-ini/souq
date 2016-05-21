@@ -17,3 +17,4 @@
 */
 
 Route::get('/', ['as' => 'homePage', 'uses' => 'productController@home']);
+Route::post('quick_view', ['as' => 'quick_view', 'uses' => 'productController@quick_view']);

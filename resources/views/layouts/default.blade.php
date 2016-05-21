@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +21,31 @@
 			/*font-family: 'droid-arabic-kufi', sans-serif;*/
 			font-family: tahoma;
 		}
+		.currency{
+			float: left;
+		    margin-right: 0px;
+		    font-size: 12px;
+		    margin-top: 0px;
+		}
+		.price{
+    		display: inherit;
+		}
+		.popular-tabs .product-list li{
+			height: 320px;
+		}
+		.product-list li .left-block img{
+			max-height: 250px;
+		}
+		.brand{
+			color: #999;
+		}
+		
+		.product-list li .product-name {
+		    text-align: center;
+		    direction: rtl;
+		}
+		
+
     </style>
     <title>{{ \App\settings::where('name', 'title')->first()->value }}</title>
 </head>
