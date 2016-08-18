@@ -1,4 +1,54 @@
 
+
+
+<script>
+	$(document).on('click', ".add", function(){
+		var type = $(this).attr('rel');
+		var productId = $(this).closest(".productItem").attr('rel');
+		var here = $(this);
+		
+		$.post( "/addTo", { productId: productId, type: type, '_token': $("input[name='_token']").val() })
+		  .done(function( data ) {
+		    // alert( "Data Loaded: " + data );
+		    if(data.status == "success"){
+		    	// alert(type);
+		    	if(type == "wish")here.closest(".productItem").css({'border': '1px solid coral'});
+		    	if(type == "compare")here.closest(".productItem").css({'border': '1px solid cornflowerblue'});
+		    	if(type == "cart"){
+		    		here.closest(".productItem").css({'border': '1px solid darkgreen'});
+		    		$.post( "/getCart", { '_token': $("input[name='_token']").val() })
+		  			.done(function( data2 ) {
+		  				$("#cart-block").html(data2);
+		  			});
+		    	}
+		    	
+		    }
+		  });
+	});
+	
+	
+	$(document).on('click', ".remove", function(){
+		var type = 'cart';
+		var productId = $(this).closest(".productItem").attr('rel');
+		var here = $(this);
+		
+		$.post( "/remove", {productId: productId, type: type, '_token': $("input[name='_token']").val() })
+		  .done(function( data ) {
+		    // alert( "Data Loaded: " + data );
+		    if(data.status == "success"){
+		    	
+	    		$.post( "/getCart", { '_token': $("input[name='_token']").val() })
+	  			.done(function( data2 ) {
+	  				$("#cart-block").html(data2);
+	  			});
+		    	
+		    	
+		    }
+		  });
+	});
+	
+	
+</script>
 <!-- Footer -->
 <footer id="footer">
      <div class="container">
@@ -20,13 +70,13 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-sm-4">
-                            <div class="introduce-title">Company</div>
+                            <div class="introduce-title">التسوق</div>
                             <ul id="introduce-company"  class="introduce-list">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Testimonials</a></li>
-                                <li><a href="#">Affiliate Program</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="/about">عن الموقع</a></li>
+                                <li><a href="/delivery">معلومات التوصيل</a></li>
+                                <li><a href="/privacy">سياسة الخصوصية</a></li>
+                                <li><a href="/terms">الشروط والاحكام</a></li>
+                                <li><a href="/contact">اتصل بنا</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4">
@@ -254,3 +304,4 @@
             </div><!-- /#footer-menu-box -->
         </div> 
 </footer>
+ 

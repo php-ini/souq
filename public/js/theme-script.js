@@ -185,6 +185,10 @@
                 var result = label_reasult +" "+ unit + ui.values[ 0 ] +' - '+ unit +ui.values[ 1 ];
                 console.log(t);
                 t.closest('.slider-range').find('.amount-range-price').html(result);
+                $("input[name='min_price']").val(ui.values[ 0 ]);
+                $("input[name='max_price']").val(ui.values[ 1 ]);
+                // alert(ui.values[ 1 ]);
+                
               }
             });
         })
@@ -241,7 +245,7 @@
                         
                     }else{
 
-                        return false;
+                        //return false;
                     }
                 }
             }
@@ -305,7 +309,8 @@
         // Quick view
         $(document).on('click','.quick-view .search,a.quick-view',function(){
             var data = {
-			'_token': $("input[name='_token']").val()
+			'_token': $("input[name='_token']").val(),
+			'productItem': $(this).closest(".productItem").attr('rel')
             }
             $.post('/quick_view', data, function(response){
                 $.fancybox(response, {
@@ -314,7 +319,12 @@
                   autoSize: false,
                   closeClick: false,
                   openEffect: 'none',
-                  closeEffect: 'none'
+                  closeEffect: 'none',
+                  helpers: {
+				    overlay: {
+				      locked: false
+				    }
+				  }
                 }); // fancybox
                 // OWL Product thumb
                 $('.product-img-thumb .owl-carousel').owlCarousel(
@@ -420,9 +430,9 @@
                 $('#nav-top-menu').removeClass('nav-ontop');
                 if($('body').hasClass('home')){
                     $('#nav-top-menu').find('.vertical-menu-content').removeAttr('style');
-                    if(width > 1024)
-                        $('#nav-top-menu').find('.vertical-menu-content').show();
-                    else{
+                    if(width > 1024){
+                        // $('#nav-top-menu').find('.vertical-menu-content').show(); // Mahmoud
+                    }else{
                         $('#nav-top-menu').find('.vertical-menu-content').hide();
                     }
                      $('#nav-top-menu').find('.vertical-menu-content').removeAttr('style');

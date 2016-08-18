@@ -25,7 +25,7 @@ class second extends Model
      *
      * @var array
      */
-    protected $fillable = ['pid', 'title', 'title_ar', 'description', 'description_ar', 'description_ar', 'image', 'flag', 'date'];
+    protected $fillable = ['pid', 'group_id', 'clothes', 'title', 'title_ar', 'description', 'description_ar', 'description_ar', 'image', 'flag', 'date'];
 	
 	public function first(){
 	    return $this->belongsTo('App\first', 'pid');
@@ -39,7 +39,17 @@ class second extends Model
         return $this->hasMany('App\third', 'sid');
     }
 	
-	public function slugify($text = ""){ 
+	
+	/**
+     * Get the group for the second category.
+     */
+    public function group()
+    {
+        return $this->belongsTo('App\groups', 'group_id');
+    }
+	
+	
+	public static function slugify($text = ""){ 
 	  // replace non letter or digits by -
 	  $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
 	
@@ -66,6 +76,6 @@ class second extends Model
 
 	public static function slug($id){
 		$second = second::findOrFail($id);
-		return $this->slugify($second->title ." ". $second->id);
+		return self::slugify($second->title ." ". $second->id);
 	}
 }

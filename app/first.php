@@ -35,7 +35,7 @@ class first extends Model
         return $this->hasMany('App\second', 'pid');
     }
 	
-	public function slugify($text = ""){ 
+	public static function slugify($text = ""){ 
 	  // replace non letter or digits by -
 	  $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
 	
@@ -62,7 +62,7 @@ class first extends Model
 
 	public static function slug($id){
 		$first = first::findOrFail($id);
-		return $this->slugify($first->title ." ". $first->id);
+		return self::slugify($first->title ." ". $first->id);
 	}
 	
 }

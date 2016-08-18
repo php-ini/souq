@@ -30,5 +30,9 @@ class settings extends Model
      */
     protected $fillable = ['name', 'value'];
 	
-	
+	public static function idFromSlug($slug){
+		$split = explode("-" , $slug);
+		$id = $split[count($split) - 1];
+		return $id;
+	}
 }

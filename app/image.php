@@ -28,5 +28,8 @@ class image extends Model
     protected $fillable = ['pid', 'type', 'image', 'thumb', 'status', 'date'];
 	
 	
+	public function third(){
+		return $this->belongsTo('App\third', 'pid');
+	}
 	
 }

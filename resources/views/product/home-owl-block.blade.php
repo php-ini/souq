@@ -2,8 +2,15 @@
 	<?php $owlname = \App\first::where('id',$first_id)->first()->title;?>
             <nav class="navbar nav-menu nav-menu-{{$owlcolor}} show-brand">
               <div class="container">
+              	<?php 
+              	$icon[8] = 'fa-fire';
+              	$icon[3] = 'fa-futbol-o';
+              	$icon[7] = 'fa-heart-o';
+              	?>
                 <!-- Brand and toggle get grouped for better mobile display -->
-                  <div class="navbar-brand"><a href="#"><img alt="{{$owlname}}" src="{{ asset('data/' . strtolower(\App\first::where('id',$first_id)->first()->title) . '.png') }}" />{{\App\first::where('id',$first_id)->first()->title_ar}}</a></div>
+                  <div class="navbar-brand"><a href="#"><span  class="fa {{$icon[$first_id]}} fa-2x"></span>
+                  	<!--<img alt="{{$owlname}}" src="{{ asset('data/' . strtolower(\App\first::where('id',$first_id)->first()->title) . '.png') }}" />-->
+                  	{{\App\first::where('id',$first_id)->first()->title_ar}}</a></div>
                   <span class="toggle-menu"></span>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse">           

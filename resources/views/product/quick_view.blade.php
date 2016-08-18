@@ -1,130 +1,140 @@
-
-<!-- Product -->
-<div id="product" class="block-quickview">
-    <div class="primary-box row">
-        <div class="pb-left-column col-xs-12 col-sm-5">
-            <!-- product-imge-->
-            <div class="product-image">
-                <div class="product-full">
-                    <img id="product-zoom" src="{{ asset('data/product-s3-420x512.jpg') }}" data-zoom-image="{{ asset('data/product-s3-850x1036.jpg') }}"/>
-                </div>
-                <div class="product-img-thumb" id="gallery_01">
-                    <ul class="owl-carousel" data-items="3" data-nav="true" data-dots="false" data-margin="20" data-loop="false">
-                        <li>
-                            <a href="#" data-image="{{ asset('data/product-s3-420x512.jpg') }}" data-zoom-image="{{ asset('data/product-s3-850x1036.jpg') }}">
-                                <img id="product-zoom"  src="{{ asset('data/product-s3-100x122.jpg') }}" /> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-image="{{ asset('data/product-s2-420x512.jpg') }}" data-zoom-image="{{ asset('data/product-s2-850x1036.jpg') }}">
-                                <img id="product-zoom"  src="{{ asset('data/product-s2-100x122.jpg') }}" /> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-image="assets/data/product-420x512.jpg') }}" data-zoom-image="{{ asset('data/product-850x1036.jpg') }}">
-                                <img id="product-zoom"  src="{{ asset('data/product-100x122.jpg') }}" /> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-image="{{ asset('data/product-s4-420x512.jpg') }}" data-zoom-image="{{ asset('data/product-s4-850x1036.jpg') }}">
-                                <img id="product-zoom"  src="{{ asset('data/product-s4-100x122.jpg') }}" /> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-image="{{ asset('data/product-s5-420x512.jpg') }}" data-zoom-image="{{ asset('data/product-s5-850x1036.jpg') }}">
-                                <img id="product-zoom"  src="{{ asset('data/product-s5-100x122.jpg') }}" /> 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-image="{{ asset('data/product-s6-420x512.jpg') }}" data-zoom-image="{{ asset('data/product-s6-850x1036.jpg') }}">
-                                <img id="product-zoom"  src="{{ asset('data/product-s6-100x122.jpg') }}" /> 
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- product-imge-->
-        </div>
-        <div class="pb-right-column col-xs-12 col-sm-6">
-            <h1 class="product-name">Maecenas consequat mauris</h1>
-            <div class="product-comments">
-                <div class="product-star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <div class="comments-advices">
-                    <a href="#">Based  on 3 ratings</a>
-                    <a href="#"><i class="fa fa-pencil"></i> write a review</a>
-                </div>
-            </div>
-            <div class="product-price-group">
-                <span class="price">$38.95</span>
-                <span class="old-price">$52.00</span>
-                <span class="discount">-30%</span>
-            </div>
-            <div class="info-orther">
-                <p>Item Code: #453217907</p>
-                <p>Availability: <span class="in-stock">In stock</span></p>
-                <p>Condition: New</p>
-            </div>
-            <div class="product-desc">
-                Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium.Fusce egestas elit eget lorem. 
-            </div>
-            <div class="form-option">
-                <p class="form-option-title">Available Options:</p>
-                <div class="attributes">
-                    <div class="attribute-label">Color:</div>
-                    <div class="attribute-list">
-                        <ul class="list-color">
-                            <li style="background:#0c3b90;"><a href="#">red</a></li>
-                            <li style="background:#036c5d;" class="active"><a href="#">red</a></li>
-                            <li style="background:#5f2363;"><a href="#">red</a></li>
-                            <li style="background:#ffc000;"><a href="#">red</a></li>
-                            <li style="background:#36a93c;"><a href="#">red</a></li>
-                            <li style="background:#ff0000;"><a href="#">red</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="attributes">
-                    <div class="attribute-label">Qty:</div>
-                    <div class="attribute-list product-qty">
-                        <div class="qty">
-                            <input id="option-product-qty" type="text" value="1">
+<div id="product" >
+                        <div class="primary-box row productItem" rel="{{$product->id}}">
+                            <div class="pb-left-column col-xs-12 col-sm-6">
+                                <!-- product-imge-->
+                                <div class="product-image">
+                                    <div class="product-full">
+                                        <img id="product-zoom" src='{{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $product->id])->first()->image }}' data-zoom-image="{{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $product->id])->first()->image }}"/>
+                                                
+                                                
+                                    </div>
+                                    <div class="product-img-thumb" id="gallery_01">
+                                        <ul class="owl-carousel" data-items="3" data-nav="true" data-dots="false" data-margin="20" data-loop="false">
+                                            @foreach($product->images as $image)
+                                            <li>
+                                                <a href="#" data-image="{{ $image_url . $image->image }}" data-zoom-image="{{ $image_url . $image->image }}">
+                                                    <img id="product-zoom"  src="{{ $image_url . $image->thumb }}" /> 
+                                                </a>
+                                            </li>
+                                            @endforeach
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- product-imge-->
+                            </div>
+                            <div class="pb-right-column col-xs-12 col-sm-6">
+                                <h1 class="product-name">{{ $product->title_ar }}</h1>
+                                <div class="product-comments">
+                                    <div class="product-star">
+                                        @for($s=1; $s<=5; $s++)
+                                    	@if($product->stars >= $s)
+                                    	<i class="fa fa-star"></i>
+                                    	@else
+                                    	<i class="fa fa-star-o"></i>
+                                    	@endif
+                                    	@endfor
+                                    </div>
+                                    <div class="comments-advices">
+                                        <a href="#" style="direction: rtl;"><?=rand(1,15)?> تقييمات</a>
+                                        <!--<a href="#"><i class="fa fa-pencil"></i> write a review</a>-->
+                                    </div>
+                                </div>
+                                <div class="product-price-group">
+                                    <span class="price"><span class="currency" style="margin-top: 4px;">{{$currency}}</span> {{$product->price}} </span>
+                                    
+                                    @if($product->price_before != 0 && $product->price_before != "")
+                                        <span class="old-price"><span class="currency" style="text-decoration: line-through">{{$currency}}</span> {{$product->price_before}}</span>
+                                        @endif
+                                    <span class="discount">-{{ $product->sale }}%</span>
+                                </div>
+                                <div class="info-orther" style="direction: rtl; text-align: center;">
+                                    <p>كود المنتج: #{{ $product->code }}</p>
+                                    <p>التوفر: <span class="in-stock">متوفر</span></p>
+                                    <p>الحالة: جديد</p>
+                                </div>
+                                <div class="product-desc">
+                                    {!! substr($product->description_ar, 0, 200) !!} 
+                                </div>
+                                <div class="form-option">
+                                    <p class="form-option-title">Available Options:</p>
+                                    <div class="attributes">
+                                        <div class="attribute-label">Color:</div>
+                                        <div class="attribute-list">
+                                            <ul class="list-color">
+                                                @foreach($product->colors as $color)
+                                                <li style="background: {{$color->color->title}};"><a href="#">{{$color->color->title_ar}}</a></li>
+                                                @endforeach
+                                                <!--<li style="background:#036c5d;" class="active"><a href="#">red</a></li>
+                                                <li style="background:#5f2363;"><a href="#">red</a></li>
+                                                <li style="background:#ffc000;"><a href="#">red</a></li>
+                                                <li style="background:#36a93c;"><a href="#">red</a></li>
+                                                <li style="background:#ff0000;"><a href="#">red</a></li>-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="attributes">
+                                        <div class="attribute-label">Qty:</div>
+                                        <div class="attribute-list product-qty">
+                                            <div class="qty">
+                                                <input id="option-product-qty" type="text" value="1">
+                                            </div>
+                                            <div class="btn-plus">
+                                                <a href="#" class="btn-plus-up">
+                                                    <i class="fa fa-caret-up"></i>
+                                                </a>
+                                                <a href="#" class="btn-plus-down">
+                                                    <i class="fa fa-caret-down" style="height: 4px;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="attributes">
+                                        <div class="attribute-label">Size:</div>
+                                        <div class="attribute-list">
+                                            <select>
+                                            	@foreach($product->sizes as $size)
+                                                <option value="{{$size->size->id}}">{{$size->size->title_ar}}</option>
+                                                @endforeach
+                                                <!--
+                                                <option value="2">XL</option>
+                                                <option value="3">XXL</option>
+                                                -->
+                                            </select>
+                                            <a id="size_chart" class="fancybox" target="_blank" href="{{ asset('data/size-chart2.jpg') }}">مخطط المقاسات</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-action">
+                                    <div class="button-group">
+                                        <a class="btn-add-cart add" rel="cart">اضف الى عربة التسوق</a>
+                                    </div>
+                                    <div class="button-group">
+                                        <a class="wishlist add" rel="wish"><i class="fa fa-heart-o"></i>
+                                        <br>المفضلة</a>
+                                        <a class="compare add" rel="compare"><i class="fa fa-signal"></i>
+                                        <br>        
+                                        قارن</a>
+                                    </div>
+                                </div>
+                                <div class="form-share">
+                                    <div class="sendtofriend-print">
+                                        <a href="javascript:print();"><i class="fa fa-print"></i> اطبع</a>
+                                        <a href="#"><i class="fa fa-envelope-o fa-fw"></i>ارسل لصديق</a>
+                                    </div>
+                                    <div class="network-share">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="btn-plus">
-                            <a href="#" class="btn-plus-up">
-                                <i class="fa fa-caret-up"></i>
-                            </a>
-                            <a href="#" class="btn-plus-down">
-                                <i class="fa fa-caret-down"></i>
-                            </a>
-                        </div>
+                        <!-- tab product -->
+                        
+                        <!-- ./tab product -->
+                        <!-- box product -->
+                        
+                        <!-- ./box product -->
+                        <!-- box product -->
+                        
+                        <!-- ./box product -->
                     </div>
-                </div>
-                <div class="attributes">
-                    <div class="attribute-label">Size:</div>
-                    <div class="attribute-list">
-                        <select>
-                            <option value="1">X</option>
-                            <option value="2">XL</option>
-                            <option value="3">XXL</option>
-                        </select>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="form-share">
-                <div class="sendtofriend-print">
-                    <a href="javascript:print();"><i class="fa fa-print"></i> Print</a>
-                    <a href="#"><i class="fa fa-envelope-o fa-fw"></i>Send to a friend</a>
-                </div>
-                <div class="network-share">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Product -->

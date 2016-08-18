@@ -34,7 +34,8 @@
 			height: 320px;
 		}
 		.product-list li .left-block img{
-			max-height: 250px;
+			max-height: 210px;
+			min-height: 210px;
 		}
 		.brand{
 			color: #999;
@@ -43,10 +44,27 @@
 		.product-list li .product-name {
 		    text-align: center;
 		    direction: rtl;
+		    min-height: 20px;
 		}
 		
-
+	.product-name .brand img{
+		display: inline;
+		width: 40px;
+		max-height: 20px;
+		
+	}
+	.product-name .brand img:hover{
+		display: inline;
+		width: 40px;
+		max-height: 20px;
+	}
     </style>
+    
+    
+    <script type="text/javascript" src="{{ asset('lib/jquery/jquery-1.11.2.min.js') }}"></script>
+    
+    
+    
     <title>{{ \App\settings::where('name', 'title')->first()->value }}</title>
 </head>
 <body class="home">
@@ -69,16 +87,50 @@
 
 <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
 <!-- Script-->
-<script type="text/javascript" src="{{ asset('lib/jquery/jquery-1.11.2.min.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('lib/jquery.bxslider/jquery.bxslider.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('lib/owl.carousel/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('lib/jquery.countdown/jquery.countdown.min.js') }}"></script>
+<script type="text/javascript" src="{{asset('lib/jquery-ui/jquery-ui.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.actual.min.js') }}"></script>
+<!-- COUNTDOWN -->
+@if(\Request::route()->getName() != 'homePage')
+<script type="text/javascript" src="{{asset('lib/countdown/jquery.plugin.js') }}"></script>
+<script type="text/javascript" src="{{asset('lib/countdown/jquery.countdown.js') }}"></script>
+<!-- ./COUNTDOWN -->
+@endif
 <script type="text/javascript" src="{{ asset('lib/fancyBox/jquery.fancybox.js') }}"></script>
 <script type="text/javascript" src="{{ asset('lib/jquery.elevatezoom.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/theme-script.js') }}"></script>
 
+<script>
+$(document).ready(function(){
+// $("img").error(function () {
+  // $(this).unbind("error").attr("src", "{{asset('images/not_found.jpg')}}");
+// });
+
+	$(".home-page").on('click', function(){
+		// if(!$(this).closest("#nav-top-menu").hasClass("nav-ontop"))
+			//$(".vertical-menu-content").slideToggle();
+	});
+	
+	// Products sort type
+	$(".sort_type").on('click', function(){
+		if($(this).hasClass("fa-sort-alpha-asc")){
+			$(this).removeClass("fa-sort-alpha-asc");
+			$(this).addClass("fa-sort-alpha-desc");
+		}else{
+			$(this).removeClass("fa-sort-alpha-desc");
+			$(this).addClass("fa-sort-alpha-asc");
+		}
+	});
+	
+
+});
+
+
+</script>
 </body>
 </html>

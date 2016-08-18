@@ -30,18 +30,42 @@
                 </div>
             </div>
             
+            <div class="social-link social-top" style="display: inline;">
+	            <a href="{{\App\settings::where('id', 3)->first()->value}}"><i class="fa fa-facebook"></i></a>
+	            
+	            <a href="{{\App\settings::where('id', 4)->first()->value}}"><i class="fa fa-twitter"></i></a>
+	            <a href="{{\App\settings::where('id', 5)->first()->value}}"><i class="fa fa-youtube" style="background: #b31217;"></i></a>
+	            <a href="{{\App\settings::where('id', 6)->first()->value}}"><i class="fa fa-google-plus"></i></a>
+	        </div>
+            
+            <style>
+            	.social-link .fa{
+            		width: 25px;
+            	}
+            </style>
+            
             <div class="support-link">
-                <a href="#">عن الموقع</a>
+                <a href="/about">عن الموقع</a>
                 <a href="#">الدعم الفني</a>
+                @if(\Auth::check())
+                <a href="/profile" style="float: left; direction: rtl;">مرحبا ، {{\Auth::user()->fname}}</a>
+                @endif
             </div>
 
             <div id="user-info-top" class="user-info pull-right">
                 <div class="dropdown">
                     <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>حسابي</span></a>
                     <ul class="dropdown-menu mega_dropdown" role="menu">
-                        <li><a href="login.html">تسجيل الدخول</a></li>
-                        <li><a href="#">مقارنة المنتجات</a></li>
-                        <li><a href="#">قائمة التمنيات</a></li>
+                        @if(!\Auth::check())
+                        <li><a href="/login">تسجيل الدخول</a></li>
+                        @else
+                        <li><a style="direction: rtl;" href="/profile">تفاصيل الحساب ({{ \Auth::user()->username }})</a></li>
+                        @endif
+                        <li><a href="/compare">مقارنة المنتجات</a></li>
+                        <li><a href="/wishlist">قائمة التمنيات</a></li>
+                        @if(\Auth::check())
+                        	<li><a href="/logout">تسجيل الخروج</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -52,14 +76,14 @@
     <div class="container main-header">
         <div class="row">
             <div class="col-xs-12 col-sm-3 logo">
-                <a href="index.html"><img alt="Kute Shop" src="{{ asset('images/logo.png') }}" /></a>
+                <a href="/"><img alt="Kute Shop" src="{{ asset('images/logo.png') }}" /></a>
             </div>
             <div class="col-xs-7 col-sm-7 header-search-box">
                 <form class="form-inline">
                       <div class="form-group form-category">
                         <select class="select-category">
                             <option value="2">جميع الاقسام</option>
-                            @foreach(\App\first::all() as $first)
+                            @foreach(\App\first::orderBy('id', 'desc')->get() as $first)
                             	<option value="{{ $first->id }}">{{ $first->title_ar }}</option>
                         	@endforeach
                             <!--<option value="1">Men</option>
@@ -67,17 +91,39 @@
                         </select>
                       </div>
                       <div class="form-group input-serach">
-                        <input type="text"  placeholder="ادخل كلمات البحث ...">
+                        <input type="text" onkeypress="return move(event, this);" id="keyword" name="keyword"  placeholder="ادخل كلمات البحث ...">
                       </div>
-                      <button type="submit" class="pull-right btn-search" title="ابحث"></button>
+                      <button type="button" onclick="return search();" class="pull-right btn-search" title="ابحث"></button>
                 </form>
             </div>
+            
+            
+            <script>
+    function move(e, here) {
+        if (e.keyCode == 13) {
+            search();
+            return false;
+        }
+    }
+// Arrange the search URL and go to it
+    function search() {
+        var keyword = $("#keyword").val();
+        if (keyword == ""){
+            alert("من فضلك ادخل كلمة للبحث عنها");
+            return false;
+        }else{
+            return location.href = '/search/' + keyword;
+           }
+           alert('sss');
+           return false;
+    }
+    
+</script>
+
+            
+            
             <div id="cart-block" class="col-xs-5 col-sm-2 shopping-cart-box">
-                <a class="cart-link" href="order.html">
-                    <span class="title">عربة التسوق</span>
-                    <span class="total">2 items - 122.38 €</span>
-                    <span class="notify notify-left">2</span>
-                </a>
+                
                 @include('layouts.cart')
             </div>
         </div>
@@ -87,6 +133,9 @@
     <div id="nav-top-menu" class="nav-top-menu">
         <div class="container">
             <div class="row">
+                
+                @include("layouts.header_left_menu")
+                <!--
                 <div class="col-sm-3" id="box-vertical-megamenus">
                     <div class="box-vertical-megamenus">
                         <h4 class="title">
@@ -265,7 +314,7 @@
                         </div>
                     </div>
                 </div>
-                
+                -->
                 
                 
                 
@@ -297,41 +346,61 @@
                                             </li>
                                         </ul>
                                     </li>-->
-                                    @foreach(\App\first::orderBy('id', 'asc')->get() as $first)
+                                    <li><a href="/">الرئيسية</a></li>
+                                    @foreach(\App\first::orderBy('id', 'desc')->get() as $first)
                                     <?php //echo "<pre>";print_r($first->seconds->toArray());exit;?>
                                     <li class="dropdown">
-                                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">{{$first->title_ar}}</a>
+                                        <a href="/category/{{\App\first::slug($first->id)}}" class="dropdown-toggle" data-toggle="dropdown">{{$first->title_ar}}</a>
                                         <ul class="dropdown-menu mega_dropdown" role="menu" style="width: 830px;">
-                                        	<?php $round = 1;$sector = 1;?>
+                                        	<?php $round = 1;$sector = 0;?>
                                         	
                                             <li class="block-container col-sm-3">
 	                                                <ul class="block">
                                                     
+                                                    <?php $group = 0;
+                                                    $total = (\DB::table('secondlevel')->where('pid', $first->id)->orderBy('group_id')->count() + (\DB::table('secondlevel')->where('pid', $first->id)->groupBy('group_id')->count() * 1));
+                                                    $break = ceil($total / 5);
+													
+                                                    ?>
+                                                    <?php //echo "count = ".$total . " -- break = " . $break;?>
                                                     
-                                                    @foreach($first->seconds as $second)
+                                                    @foreach(\App\second::where('pid', $first->id)->orderBy('group_id')->get() as $second)
                                                     
-                                                    @if($round == 1)
+                                                    @if($group != $second->group_id)
+                                                    <?php $group = $second->group_id;?>
                                                     
 	                                                    <li class="img_container">
 	                                                        <a href="#">
-	                                                            <img class="img-responsive" src="{{ $url . $second->image }}" alt="{{$second->title_ar}}">
+	                                                            <img class="img-responsive" src="{{ $url . $second->image }}" title="{{$second->group->title_ar}}" alt="{{$second->title_ar}}">
 	                                                        </a>
 	                                                    </li>
+	                                                    
+	                                                    
 	                                                    <li class="link_container group_header">
-	                                                        <a href="#">تصنيف {{$sector}} </a>
+	                                                        <a href="/group/{{str_replace(" ","-",$second->group->title) .'-'. $second->id}}"> {{$round}} - {{\DB::table('groups')->where('id', $second->group_id)->first()->title_ar}} </a>
 	                                                    </li>
-                                                    @endif
-                                                    <li class="link_container"><a href="#">{{$second->title_ar}}</a></li>
-                                                    
-		                                            @if($round % 7 == 0)
+	                                                    @if(($round % $break) === 0)
 		                                            </ul>
 		                                            </li>
 		                                            
 		                                            <li class="block-container col-sm-3">
 		                                                <ul class="block">
 		                                                	
+                                                    {{-- */$sector++;/* --}}
+                                                    @endif
+                                                    <?php $round++;?>
+                                                    @endif
+                                                    <li class="link_container"><a href="/products/{{\App\second::slug($second->id)}}">{{$round}} - {{$second->title_ar}}</a></li>
+                                                    
+		                                            @if(($round % $break) === 0)
+		                                            </ul>
+		                                            </li>
+		                                            
+		                                            <li class="block-container col-sm-3">
+		                                                <ul class="block">
+		                                                	<?php //echo "count = ".$total . " -- break = " . $break;?>
 		                                                	
-                                                    {{-- */$round = 0;$sector++;/* --}}
+                                                    {{-- */$sector++;/* --}}
                                                     @endif
                                                     {{-- */$round++;/* --}}
                                                     
@@ -366,4 +435,6 @@
         </div>
     </div>
 </div>
+
+
 <!-- end header -->

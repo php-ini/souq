@@ -3614,10 +3614,11 @@ span.notify-right{
   background: #ff3366;
   color: #fff;
 }
-.sortPagiBar .bottom-pagination .pagination .active a{
+.sortPagiBar .bottom-pagination .pagination .active a, .sortPagiBar .bottom-pagination .pagination .active span{
   background: #ff3366;
   color: #fff;
 }
+
 .sortPagiBar .bottom-pagination .pagination > li:first-child > a, 
 .sortPagiBar .bottom-pagination .pagination > li:first-child > span {
     margin-left: 0px;
