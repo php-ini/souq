@@ -30,7 +30,20 @@ class third extends Model
      */
     protected $fillable = ['pid', 'sid', 'title', 'title_ar', 'indx', 'description', 'description_ar',
      'description_ar', 'price', 'price_before', 'sale', 'stars', 'brand', 'brand_ar', 'color', 'size',
-      'flag', 'available', 'code', 'video', 'date'];
+      'flag', 'available', 'code', 'video', 'date', 'parent_id', 'uid', 'status_id', 'qty', 'ship_fees', 'site_commission', 'extra_fees'];
+	
+	
+	public function parent_product(){
+	    return $this->belongsTo('App\third', 'parent_id');
+	}
+	
+	public function member(){
+	    return $this->belongsTo('App\User', 'uid');
+	}
+	
+	public function status(){
+	    return $this->belongsTo('App\statuses', 'status_id');
+	}
 	
 	public function second(){
 	    return $this->belongsTo('App\second', 'sid');

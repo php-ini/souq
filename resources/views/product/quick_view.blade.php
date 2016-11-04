@@ -4,7 +4,7 @@
                                 <!-- product-imge-->
                                 <div class="product-image">
                                     <div class="product-full">
-                                        <img id="product-zoom" src='{{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $product->id])->first()->image }}' data-zoom-image="{{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $product->id])->first()->image }}"/>
+                                        <img class="img-responsive" id="product-zoom" src='{{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $product->id])->first()->image }}' data-zoom-image="{{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $product->id])->first()->image }}"/>
                                                 
                                                 
                                     </div>
@@ -13,7 +13,7 @@
                                             @foreach($product->images as $image)
                                             <li>
                                                 <a href="#" data-image="{{ $image_url . $image->image }}" data-zoom-image="{{ $image_url . $image->image }}">
-                                                    <img id="product-zoom"  src="{{ $image_url . $image->thumb }}" /> 
+                                                    <img clsas="img-responsive" id="product-zoom"  src="{{ $image_url . $image->thumb }}" /> 
                                                 </a>
                                             </li>
                                             @endforeach
@@ -57,7 +57,7 @@
                                     {!! substr($product->description_ar, 0, 200) !!} 
                                 </div>
                                 <div class="form-option">
-                                    <p class="form-option-title">Available Options:</p>
+                                    <p class="form-option-title">الخيارات المتاحة</p>
                                     <div class="attributes">
                                         <div class="attribute-label">Color:</div>
                                         <div class="attribute-list">
@@ -65,11 +65,7 @@
                                                 @foreach($product->colors as $color)
                                                 <li style="background: {{$color->color->title}};"><a href="#">{{$color->color->title_ar}}</a></li>
                                                 @endforeach
-                                                <!--<li style="background:#036c5d;" class="active"><a href="#">red</a></li>
-                                                <li style="background:#5f2363;"><a href="#">red</a></li>
-                                                <li style="background:#ffc000;"><a href="#">red</a></li>
-                                                <li style="background:#36a93c;"><a href="#">red</a></li>
-                                                <li style="background:#ff0000;"><a href="#">red</a></li>-->
+                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -96,10 +92,7 @@
                                             	@foreach($product->sizes as $size)
                                                 <option value="{{$size->size->id}}">{{$size->size->title_ar}}</option>
                                                 @endforeach
-                                                <!--
-                                                <option value="2">XL</option>
-                                                <option value="3">XXL</option>
-                                                -->
+                                                
                                             </select>
                                             <a id="size_chart" class="fancybox" target="_blank" href="{{ asset('data/size-chart2.jpg') }}">مخطط المقاسات</a>
                                         </div>
@@ -120,8 +113,8 @@
                                 </div>
                                 <div class="form-share">
                                     <div class="sendtofriend-print">
-                                        <a href="javascript:print();"><i class="fa fa-print"></i> اطبع</a>
-                                        <a href="#"><i class="fa fa-envelope-o fa-fw"></i>ارسل لصديق</a>
+                                        <!--<a href="javascript:print();"><i class="fa fa-print"></i> اطبع</a>
+                                        <a href="#"><i class="fa fa-envelope-o fa-fw"></i>ارسل لصديق</a>-->
                                     </div>
                                     <div class="network-share">
                                     </div>
@@ -130,11 +123,7 @@
                         </div>
                         <!-- tab product -->
                         
-                        <!-- ./tab product -->
-                        <!-- box product -->
                         
-                        <!-- ./box product -->
-                        <!-- box product -->
                         
                         <!-- ./box product -->
                     </div>

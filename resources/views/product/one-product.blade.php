@@ -30,7 +30,8 @@
                                     </div>
                                 </div>
                                 <div class="right-block">
-                                    <h5 class="product-name"><a href="/product/{{\App\third::slug($one->id)}}">{{$one->title_ar}}</a>@if($one->brandz->title_ar != "")<span class="brand"> @if($one->brandz->id != 15)({{$one->brandz->title_ar}} <img src="{{$image_url.$one->brandz->image}}" width="40" />) @endif</span>@endif</h5>
+                                    <h5 class="product-name"><a href="/product/{{\App\third::slug($one->id)}}">{{$one->title_ar}}</a>
+                                    	@if($one->brandz->title_ar != "")<span class="brand"> @if($one->brandz->id != 15)({{$one->brandz->title_ar}}) <img  src="{{$image_url.$one->brandz->image}}" width="40" class="img-responsive" /> @endif</span>@endif</h5>
                                     <div class="product-star">
                                         @for($s=1; $s<=5; $s++)
                                     	@if($one->stars >= $s)
@@ -41,13 +42,15 @@
                                     	@endfor
                                     </div>
                                     <div class="content_price">
-                                        <span class="price product-price"><span class="currency" style="margin-top: 4px;">{{$currency}}</span> {{$one->price}} </span>
+                                        <span class="price product-price"><span class="currency" style=""> {{$one->price}} </span><span class="currency2" style="">{{$currency}}</span>
+                                       </span>
                                         @if($one->price_before != 0 && $one->price_before != "")
-                                        <span class="price old-price"><span class="currency" style="text-decoration: line-through">{{$currency}}</span> {{$one->price_before}}</span>
+                                        <span class="price old-price"><span class="currency" style="text-decoration: line-through"> {{$one->price_before}}</span><span class="currency2" style="text-decoration: line-through;">{{$currency}}</span>
+                                       </span>
                                         @endif
                                     </div>
                                     <div class="info-orther">
-                                        @if($one->code != "")<p>كود المنتج: {{$one->code}}</p>@endif
+                                        @if($one->code != "")<p style="display: block; clear: both;">كود المنتج: {{$one->code}}</p>@endif
                                         <?php
                                         $avail[0] = "غير متوفر";
 										$avail[1] = "متوفر حاليا";

@@ -74,7 +74,7 @@
                 Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium.Fusce egestas elit eget lorem. 
             </div>
             <div class="form-option">
-                <p class="form-option-title">Available Options:</p>
+                <p class="form-option-title">الخيارات المتاحة</p>
                 <div class="attributes">
                     <div class="attribute-label">Color:</div>
                     <div class="attribute-list">

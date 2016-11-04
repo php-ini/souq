@@ -14,9 +14,10 @@ class productController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
+    public function __construct(Request $request){
     	view()->share('image_url', 'http://perfectteamwork.com/');
 		view()->share('currency', 'ريال');
+		view()->share('cart_onfly', count($request->session()->get('cart')));
     }
     public function index()
     {
@@ -86,7 +87,7 @@ class productController extends Controller
 			$sort_type = "desc";
 		}
 		$id = \App\settings::idFromSlug($name);
-		$products = \App\third::where('sid', $id)->orderBy($sort, $sort_type)->paginate(10);
+		$products = \App\third::where('sid', $id)->where('qty', '>', 0)->where('status_id', 2)->orderBy($sort, $sort_type)->paginate(10);
 		$second = \App\second::where('id',$id)->first();
 		 // \Request::route()->getName();exit;
 		 // echo \Route::getFacadeRoot()->current()->uri();exit;
@@ -96,9 +97,9 @@ class productController extends Controller
 		 $filter['sort'] = $sort;
 		 $filter['sort_type'] = $sort_type;
 		 $filter['colors'] = [];
-		 $min = \DB::table('thirdlevel')->select(\DB::raw('min(price) as min_price'))->where('sid', $id)->first();
+		 $min = \DB::table('thirdlevel')->select(\DB::raw('min(price) as min_price'))->where('sid', $id)->where('qty', '>', 0)->where('status_id', 2)->first();
 		 $filter['min_price'] = $min->min_price;
-		 $max = \DB::table('thirdlevel')->select(\DB::raw('max(price) as max_price'))->where('sid', $id)->first();
+		 $max = \DB::table('thirdlevel')->select(\DB::raw('max(price) as max_price'))->where('sid', $id)->where('qty', '>', 0)->where('status_id', 2)->first();
 		 $filter['max_price'] = $max->max_price;
 		 $filter['sel_min_price'] = $min->min_price;
 		 $filter['sel_max_price'] = $max->max_price;
@@ -156,9 +157,9 @@ class productController extends Controller
 		$products = \App\third::where('sid', $id);
 		$second = \App\second::where('id',$id)->first();
 		
-		$min = \DB::table('thirdlevel')->select(\DB::raw('min(price) as min_price'))->where('sid', $id)->first();
+		$min = \DB::table('thirdlevel')->select(\DB::raw('min(price) as min_price'))->where('sid', $id)->where('qty', '>', 0)->where('status_id', 2)->first();
 		$filter['min_price'] = $min->min_price;
-		$max = \DB::table('thirdlevel')->select(\DB::raw('max(price) as max_price'))->where('sid', $id)->first();
+		$max = \DB::table('thirdlevel')->select(\DB::raw('max(price) as max_price'))->where('sid', $id)->where('qty', '>', 0)->where('status_id', 2)->first();
 		$filter['max_price'] = $max->max_price;
 		 
 		if(isset($input['sort'])){
@@ -222,7 +223,7 @@ class productController extends Controller
 			$filter['brand'] = [];
 		}
 		
-		$products = $products->orderBy($sort, $sort_type)->paginate(10);
+		$products = $products->where('qty', '>', 0)->where('status_id', 2)->orderBy($sort, $sort_type)->paginate(10);
 		// \DB::enableQueryLog();
 		return view('product.products', ['id' => $id, 'products' => $products, 'second' => $second,
 		'sort' => $sort, 'sort_type' => $sort_type, 'slug' => $name, 'filter' => $filter]);
@@ -249,7 +250,7 @@ class productController extends Controller
 		if($brand->count() > 0){
 			$br = $brand->first();
 			$id = $br->id;
-			$prod = \App\third::where('brand', $br->id)->orderBy($sort, $sort_type)->paginate(10);
+			$prod = \App\third::where('brand', $br->id)->where('qty', '>', 0)->where('status_id', 2)->orderBy($sort, $sort_type)->paginate(10);
 			return view('product.brand', ['id' => $id,'brand' => $br, 'products' => $prod, 'sort' => $sort, 'sort_type' => $sort_type]);
 		}else{
 			return redirect('product.home');
@@ -273,7 +274,7 @@ class productController extends Controller
 		
 		$products = \App\third::where('title' , 'like', '%'.$name.'%')->orWhere('title_ar' , 'like', '%'.$name.'%')
 		->orWhere('description' , 'like', '%'.$name.'%')->orWhere('description_ar' , 'like', '%'.$name.'%')
-		->orWhere('code' , 'like', '%'.$name.'%')
+		->orWhere('code' , 'like', '%'.$name.'%')->where('qty', '>', 0)->where('status_id', 2)
 		->orderBy($sort, $sort_type)->paginate(10);
 		
 		 

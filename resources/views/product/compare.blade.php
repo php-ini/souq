@@ -7,9 +7,9 @@
     <div class="container" id="columns">
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
-            <a class="home" href="#" title="Return to Home">Home</a>
+            <a class="home" href="#" title="Return to Home">بوروروم</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page">Compare</span>
+            <span class="navigation_page">مقارنة المنتجات</span>
         </div>
         <!-- ./breadcrumb -->
         <!-- page heading-->
@@ -24,7 +24,7 @@
                     <td class="compare-label">Product Image</td>
                     @foreach($products as $one)
                     <td>
-                        <a href="/product/{{\App\third::slug($one->id)}}"><img src="@if(\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->count() > 0){{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->first()->image }}
+                        <a href="/product/{{\App\third::slug($one->id)}}"><img class="img-responsive" src="@if(\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->count() > 0){{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->first()->image }}
                                                 @else{{asset('images/not_found.jpg')}}@endif" onerror="this.src='{{asset('images/not_found.jpg')}}';" alt="Product"></a>
                     </td>
                     @endforeach

@@ -56,8 +56,10 @@
                         <div class="input-group">
                         	
 						  
-						  <input name="email" type="text" class="form-control" placeholder="Email Address" aria-describedby="basic-addon1">
 						  <span class="input-group-addon" id="basic-addon1">البريد الالكتروني</span>
+                          <input name="email" type="text" class="form-control" placeholder="Email Address" aria-describedby="basic-addon1">
+
+						  
 						</div>
 						
 						
@@ -66,13 +68,15 @@
 						<label for="basic-url"></label>
 						<div class="input-group">
 						  
-						  <input name="password" type="password" class="form-control" id="basic-url">
 						  <span class="input-group-addon" >كلمة المرور</span>
+                          <input name="password" type="password" class="form-control" id="basic-url">
+
+						  
 						</div>
 						
 						<br>
 						
-						<div class="input-group" style="width: 150px;float: right;">
+						<div class="input-group" style="width: 150px;">
 					      <span class="input-group-addon">
 					        <input type="checkbox" name="remember"  aria-label="تذكرني"> حفظ كلمة المرور
 					      </span>
@@ -80,13 +84,37 @@
 					    </div>
 					    
 					    <br>
-                        <button class="btn btn-default" ><a href="/register">انشئ حساب جديد</a></button>
-                        <button type="submit" class="button"><i class="fa fa-lock"></i> تسجيل الدخول</button>
+                        <button type="button" class="btn btn-default" onclick="location.href='/register';" ><a href="/register">انشئ حساب جديد</a></button>
+                        <button type="submit" class="btn btn-default"><i class="fa fa-lock"></i> تسجيل الدخول</button>
                         
                         </form>
                     </div>
                 </div>
             </div>
+            
+            
+            
+            <br>
+            
+            <div class="row">
+            <div class="col-sm-12">
+                    <div class="" style="text-align: center">
+                        <h3>او تسجيل الدخول باستخدام مواقع التواصل الاجتماعي:</h3>
+                        <br>
+                <a class="fa fa-twitter white btn btn-primary" href="{{ route('social.login', ['twitter']) }}">Twitter</a>
+	            <a class="fa fa-facebook white btn btn-primary" href="{{ route('social.login', ['facebook']) }}">Facebook</a>
+	            <a class="fa fa-google white btn btn-primary" href="{{ route('social.login', ['google']) }}">Google</a>
+		        </div>
+		    </div>
+    	</div>
+    
+    <style>
+    	.white{
+    		color: white;
+    	}
+    </style>
+    
+    
         </div>
     </div>
 </div>

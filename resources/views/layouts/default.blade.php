@@ -12,60 +12,38 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('lib/jquery-ui/jquery-ui.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/component.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" />
-    <style>
-    	/*@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
-		.droid-arabic-kufi{font-family: 'Droid Arabic Kufi', serif;}*/
-		body{
-			/*font-family: 'droid-arabic-kufi', sans-serif;*/
-			font-family: tahoma;
-		}
-		.currency{
-			float: left;
-		    margin-right: 0px;
-		    font-size: 12px;
-		    margin-top: 0px;
-		}
-		.price{
-    		display: inherit;
-		}
-		.popular-tabs .product-list li{
-			height: 320px;
-		}
-		.product-list li .left-block img{
-			max-height: 210px;
-			min-height: 210px;
-		}
-		.brand{
-			color: #999;
-		}
-		
-		.product-list li .product-name {
-		    text-align: center;
-		    direction: rtl;
-		    min-height: 20px;
-		}
-		
-	.product-name .brand img{
-		display: inline;
-		width: 40px;
-		max-height: 20px;
-		
-	}
-	.product-name .brand img:hover{
-		display: inline;
-		width: 40px;
-		max-height: 20px;
-	}
-    </style>
-    
-    
     <script type="text/javascript" src="{{ asset('lib/jquery/jquery-1.11.2.min.js') }}"></script>
-    
-    
-    
+
+    <style>
+.homeslider{ visibility:hidden; }
+  /* @font-face kit by Fonts2u (http://www.fonts2u.com) */ @font-face {font-family:"GE SS Two Light";src:url("../fonts/GE_SS_Two_Light.eot?")
+ format("eot"),url("../fonts/GE_SS_Two_Light.woff") format("woff"),url("../fonts/GE_SS_Two_Light.ttf")
+ format("truetype"),url("../fonts/GE_SS_Two_Light.svg#GESSTwoLight-Light")
+ format("svg");font-weight:normal;font-style:normal;}
+
+
+    </style>
+
+
+
+
+
+
     <title>{{ \App\settings::where('name', 'title')->first()->value }}</title>
+
+
+<meta name="description" content="{{ \App\settings::where('id', 9)->first()->value }}">
+<meta name="keywords" content="{{ \App\settings::where('id', 14)->first()->value }}">
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+
 </head>
 <body class="home">
 <!-- TOP BANNER -->
@@ -104,7 +82,13 @@
 <script type="text/javascript" src="{{ asset('lib/fancyBox/jquery.fancybox.js') }}"></script>
 <script type="text/javascript" src="{{ asset('lib/jquery.elevatezoom.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/theme-script.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/classie.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/uisearch.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/modernizr.custom.js') }}"></script>
 
+<script>
+ new UISearch( document.getElementById( 'sb-search' ) );
+</script>
 <script>
 $(document).ready(function(){
 // $("img").error(function () {
@@ -115,7 +99,7 @@ $(document).ready(function(){
 		// if(!$(this).closest("#nav-top-menu").hasClass("nav-ontop"))
 			//$(".vertical-menu-content").slideToggle();
 	});
-	
+
 	// Products sort type
 	$(".sort_type").on('click', function(){
 		if($(this).hasClass("fa-sort-alpha-asc")){
@@ -126,11 +110,43 @@ $(document).ready(function(){
 			$(this).addClass("fa-sort-alpha-asc");
 		}
 	});
-	
+
 
 });
 
 
+</script>
+<script>
+$(document).ready(function(){
+    $(".top-searches img").click(function(){
+        $(".top-searches input").toggle(500);
+    });
+});
+</script>
+<script>
+$(document).ready(function(){
+    $(".top-carts img").hover(function(){
+        $(".new-cart").toggle(500)
+    });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".collapse-img img").click(function(){
+        $(".collapse-top").toggle(500)
+    });
+});
+</script>
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	@if(\Request::route()->getName() == "homePage")
+	
+	
+document.getElementsByClassName("homeslider")[0].style.visibility = "visible";
+@endif
+
+});
 </script>
 </body>
 </html>

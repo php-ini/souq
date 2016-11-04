@@ -76,7 +76,7 @@
 						
 						<div class="input-group">
 						  <span class="input-group-addon" >الجنس</span>
-						  <select style="text-indent: 49%;" name="gender" class="form-control">
+						  <select name="gender" class="form-control">
 						  	<option value"1" @if($user->gender == 1) selected="selected" @endif>ذكر</option>
 						  	<option value"2" @if($user->gender == 2) selected="selected" @endif>انثى</option>
 						  </select>
@@ -138,10 +138,11 @@
 
 <style>
 	.input-group{
-		display: inline;
+		/*display: inline;*/
+		margin-bottom:10px;
 	}
 	input, select option{
-		text-align: center;
+		/*text-align: center;*/
 	}
 </style>
 

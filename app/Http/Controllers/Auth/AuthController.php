@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 
+
+use Socialite;
+
+
 class AuthController extends Controller
 {
     /*
@@ -34,9 +38,10 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+		view()->share('cart_onfly', count($request->session()->get('cart')));
     }
 
     /**
@@ -98,7 +103,65 @@ class AuthController extends Controller
     }
 	
 	
+	/*
+	public function postLogin(Request $request){
+		// dd($request->all());
+		$input = $request->all();
+		$email = $input['email'];
+		$password = $input['password'];
+		
+		// dd($request->session());
+		// die(bcrypt($password));
+		// dd(User::where('password', bcrypt($password))->count());
+		if (\Auth::attempt(['email' => $email, 'password' => $password])) {
+				
+				
+			\Auth::login(User::where('email', $email)->first());
+				
+				
+			// dd(\Auth::user());
+			// \Auth::loginUsingId(16);
+            // Authentication passed...
+            return redirect()->intended('/');
+        }else{
+        	dd($input);
+        }
+	}
+	*/
 	
+
+
+
+
+public function postLogin(Request $request)
+{
+    $this->validate($request, [
+        'email' => 'required|email', 'password' => 'required',
+    ]);
+
+    $credentials = $request->only('email', 'password');
+
+    if (\Auth::attempt($credentials, $request->has('remember')))     {
+        \Session::flash('message', 'You are now logged in.');
+        \Session::flash('status', 'success');
+
+$some_name = session_name("pororom_user");
+session_set_cookie_params(0, '/', '.pororom.com');
+session_start();
+
+$_SESSION['uid'] = \Auth::user()->id;
+
+
+
+        return redirect("/");
+    }
+    return redirect($this->loginPath())
+                ->withInput($request->only('email', 'remember'))
+                ->withErrors([
+                    'email' => $this->getFailedLoginMessage(),
+                ]);
+}	
+
 	
 
 	public function success(){
@@ -127,4 +190,82 @@ class AuthController extends Controller
             
         ]);
     }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public function redirectToProvider($provider)
+    {
+    	// die("Under Testing");
+    	if($provider == "facebook"){
+        	return Socialite::driver($provider)->fields([
+	            'first_name', 'last_name', 'email', 'gender', 'birthday'
+	        ])->scopes([
+	            'email', 'user_birthday'
+	        ])->redirect();
+		}else{
+        	return Socialite::driver($provider)->redirect();
+		}
+    }
+    
+     public function handleProviderCallback($provider)
+    {
+     //notice we are not doing any validation, you should do it
+		if($provider == "facebook"){
+        $user = Socialite::driver($provider)->fields([
+            'first_name', 'last_name', 'email', 'gender', 'birthday'
+        ])->user();
+		$data = [
+            'fname' => $user->user['first_name'],//$user->getName(),
+            'lname' => $user->user['last_name'],//$user->getName(),
+            'dob' => isset($user->user['birthday']) ? date("Y-m-d",strtotime($user->user['birthday'])) : "",//$user->getName(),
+            'email' => $user->email,
+            'gender' => $user->user['gender'] == "male" ? 1 : 2,
+            'login_type' => 'facebook'
+        ];
+		}elseif($provider == "twitter"){
+			$user = Socialite::driver($provider)->user();
+			$name = explode(" ", $user->name);
+			$data['fname'] = $name[0];
+			$data['lname'] = $name[1];
+			$data['email'] = $user->email;
+			$data['login_type'] = 'twitter';
+			
+		}elseif($provider == "google"){
+			$user = Socialite::driver($provider)->user();
+			$name = explode(" ", $user->user['displayName']);
+			$data['fname'] = $name[0];
+			$data['lname'] = $name[1];
+			$data['email'] = $user->email;
+			$data['login_type'] = 'google';
+			
+		}else{
+			$user = Socialite::driver($provider)->user();
+			$data = $user;
+		}
+		// echo $user->first_name;
+        // echo"<pre>";print_r($user);exit;
+		// $name = explode(" ", $user->getName()); 
+        // stroing data to our use table and logging them in
+        
+        if(User::where('email', $data['email'])->count() > 0){
+        	$user = User::where('email', $data['email'])->first();
+        }else{
+        	$user = User::firstOrCreate($data);
+        }
+     	
+        \Auth::login($user);
+
+        //after login redirecting to home page
+        return redirect($this->redirectPath());
+    }
+
+
 }

@@ -7,32 +7,24 @@
     <div class="container" id="columns">
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
-            <a class="home" href="#" title="Return to Home">Home</a>
+            <a class="home" href="#" title="Return to Home">بوروروم</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page">Fashion</span>
+            <span class="navigation_page">البحث</span>
         </div>
         <!-- ./breadcrumb -->
         <!-- row -->
         <div class="row">
             <!-- Left colunm -->
-            @include('layouts.sidebar')
+            
             <!-- ./left colunm -->
             <!-- Center colunm-->
-            <div class="center_column col-xs-12 col-sm-9" id="center_column">
+            <div class="center_column col-xs-12 col-sm-9 col-sm-push-3" id="center_column">
                 <!-- category-slider -->
-                <!--<div class="category-slider">
-                    <ul class="owl-carousel owl-style2" data-dots="false" data-loop="true" data-nav = "true" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1">
-                        
-                        <li>
-                            <img src="http://technology.nasa.gov/t2media/tops/img/TOP2-243/ARC-16372-1%20Computer-devices-Mobile-phone1425x780.jpg" alt="category-slider">
-                        </li>
-                    </ul>
-                </div>-->
-                <!-- ./category-slider -->
+                
 
                 <!-- category short-description -->
                 <div class="cat-short-desc">
-                    <div class="desc-text text-right">
+                    <div class="desc-text text-left">
                         <p>
                             
                         </p>
@@ -103,14 +95,7 @@
                         {!! $products->appends(\Input::except('page'))->render() !!}
                         </nav>
                     </div>
-                    <!--<div class="show-product-item">
-                        <select name="">
-                            <option value="">Show 18</option>
-                            <option value="">Show 20</option>
-                            <option value="">Show 50</option>
-                            <option value="">Show 100</option>
-                        </select>
-                    </div>-->
+                    
                     
                     @if(count($products) > 0)
                     <div class="sort-product" style="margin-top: 0;">
@@ -128,6 +113,10 @@
                 </div>
             </div>
             <!-- ./ Center colunm -->
+            
+            @include('layouts.sidebar')
+            
+            
         </div>
         <!-- ./row-->
     </div>

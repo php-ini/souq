@@ -12,6 +12,17 @@
     /* ---------------------------------------------
      Scripts ready
      --------------------------------------------- */
+     
+                   $("#box-vertical-megamenus").find('.vertical-menu-content2').hide();
+
+     $(document).on('click','.btnmob',function(){
+ 
+            $(this).closest('.box-vertical-megamenus').find('.vertical-menu-content2').slideToggle();
+            $(this).closest('.title').toggleClass('active');
+            return false;
+        })
+        	
+        	
     $(document).ready(function() {
         js_height_full();
         if($('.parallax').length >0){
@@ -269,6 +280,7 @@
             return false;
         })
         /* Close vertical */
+
         $(document).on('click','*',function(e){
             var container = $("#box-vertical-megamenus");
             if (!container.is(e.target) && container.has(e.target).length === 0){
@@ -428,6 +440,7 @@
                 $('#header .header-search-box form').appendTo('#form-search-opntop');
             }else{
                 $('#nav-top-menu').removeClass('nav-ontop');
+
                 if($('body').hasClass('home')){
                     $('#nav-top-menu').find('.vertical-menu-content').removeAttr('style');
                     if(width > 1024){
@@ -443,7 +456,7 @@
                 $('#user-info-opntop #user-info-top').appendTo('.top-header .container');
                 $('#form-search-opntop form').appendTo('#header .header-search-box');
             }
-        }
+        } else { $('#nav-top-menu').addClass('nav-ontop'); $('#main-menu').css( " display: none;" );  }
     });
     var vertical_menu_height = $('#box-vertical-megamenus .box-vertical-megamenus').innerHeight();
     /**==============================
@@ -466,7 +479,7 @@
             $('#nav-top-menu').removeClass('nav-ontop');
             if($('body').hasClass('home')){
                 if(width > 1024)
-                    $('#nav-top-menu').find('.vertical-menu-content').show();
+                     $('#nav-top-menu').find('.vertical-menu-content').show();
                 else{
                     $('#nav-top-menu').find('.vertical-menu-content').hide();
                 }

@@ -7,12 +7,12 @@
     <div class="container" id="columns">
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
-            <a class="home" href="/" title="Return to Home">Home</a>
+            <a class="home" href="/" title="Return to Home">بوروروم</a>
             <span class="navigation-pipe">&nbsp;</span>
             <span class="navigation_page">Brand</span>
             
             <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page">{{$brand->title}}</span>
+            <span class="navigation_page">{{$brand->title_ar}}</span>
         </div>
         <!-- ./breadcrumb -->
         <!-- row -->
@@ -26,7 +26,7 @@
                 <div class="category-slider" style="text-align: center;">
                     <ul class="">
                         <li>
-                            <img src="{{ $image_url . $brand->image }}" alt="category-slider">
+                            <img class="img-responsive" src="{{ $image_url . $brand->image }}" alt="category-slider">
                         </li>
                         <!--<li>
                             <img src="http://technology.nasa.gov/t2media/tops/img/TOP2-243/ARC-16372-1%20Computer-devices-Mobile-phone1425x780.jpg" alt="category-slider">

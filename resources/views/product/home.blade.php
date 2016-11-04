@@ -7,30 +7,41 @@
 <div id="home-slider">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3 slider-left"></div>
+            <div class="col-sm-3 slider-left">
+           <a href="#"><img class="img-responsive" alt="Funky roots" src="{{ asset('images/temp_side.jpg') }}" style="height: 540px;"/></a>
+           </div>
             <div class="col-sm-9 header-top-right">
                 <div class="homeslider">
                     <div class="content-slide">
                         <ul id="contenhomeslider">
-                          <li><img alt="" src="http://2.bp.blogspot.com/-0tVheG8wkXo/TW7l5diIq7I/AAAAAAAAAZk/RA_G0MiAWw0/s1600/4.jpg" title="" /></li>
-                          <li><img alt="" src="https://az837918.vo.msecnd.net/publishedimages/offers/1057/en-CA/images/1/west-edmonton-mall-shopping-package-L-2.jpg" title="" /></li>
-                          <li><img  alt="" src="http://travelfashiongirl.com/wp-content/uploads/2014/03/Best-Shopping-Spots-Around-Paris.jpg" title="" /></li>
+                        	@foreach(\DB::table('files')->where('status', 1)->get() as $slider)
+                          <li><img class="img-responsive" alt="" src="{{ $image_url . $slider->url}}" title="{{ $slider->title }}" /></li>
+                        	@endforeach
+
+
                         </ul>
                     </div>
                 </div>
                 <div class="header-banner banner-opacity">
-                    <!--<a href="#"><img alt="Funky roots" src="http://images02.oe24.at/8_Martina_Fasslaben_417772a.jpg/1.390.809" /></a>-->
-                    <a href="#"><img alt="Funky roots" src="{{ asset('images/temp_side.jpg') }}" style="height: 538px;"/></a>
+
+                    <a href="#"><img class="img-responsive" alt="Funky roots" src="{{ asset('images/temp_side.jpg') }}" style="height: 538px;"/></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- END Home slideder-->
+<div class="container my-margin-top" style="padding:0px;">
+<div class="col-xs-12 hidden-sm hidden-md hidden-lg ">
+	<a href="#"><img class="img-responsive" alt="Funky roots" src="{{ asset('images/mobile-ads.jpg') }}"/></a>
+</div>
+
+</div>
+<!-- END mobile ads-->
 <!-- servives -->
 <div class="container">
-    <div class="service ">
-        <div class="col-xs-6 col-sm-3 service-item">
+    <div class="service " style="margin-top: 10px;">
+        <div class="col-xs-12 col-sm-3 service-item">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s1.png') }}" />
             </div>
@@ -39,7 +50,7 @@
                 <span>شحن مجاني للمشتريات فوق 500 ريال</span>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-3 service-item">
+        <div class="col-xs-12 col-sm-3 service-item">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s2.png') }}" />
             </div>
@@ -48,17 +59,17 @@
                 <span>ضمان استرجاع النقود خلال 30 يوم</span>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-3 service-item">
+        <div class="col-xs-6 col-sm-3 service-item hidden-xs  ">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s3.png') }}" />
             </div>
-            
+
             <div class="info" >
                 <a href="#"><h3>دعم فني 24/7</h3></a>
                 <span>استشارة متواجدة دائما</span>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-3 service-item">
+        <div class="col-xs-6 col-sm-3 service-item hidden-xs">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s4.png') }}" />
             </div>
@@ -74,7 +85,7 @@
 <div class="page-top">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-9 page-top-left">
+            <div class="col-xs-12 col-sm-12 page-top-left">
                 <div class="popular-tabs">
                       <ul class="nav-tab">
                         <li class="active"><a data-toggle="tab" href="#tab-1">احدث المنتجات</a></li>
@@ -83,39 +94,39 @@
                       </ul>
                       <div class="tab-container">
                             <div id="tab-1" class="tab-panel active">
-                                <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
-                                    @foreach(\App\third::orderBy('date', 'desc')->take(5)->get() as $one)
+                                <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('date', 'desc')->take(5)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
-                                    
-                                    
-                                    
-                                    
+
+
+
+
                                 </ul>
                             </div>
                             <div id="tab-2" class="tab-panel">
-                                <ul class="product-list owl-carousel"  data-dots="false" data-loop="true" data-nav = "true" data-margin = "30"  data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
-                                    
-                                    
-                                    @foreach(\App\third::orderBy('sale', 'desc')->take(5)->get() as $one)
+                                <ul class="product-list owl-carousel"  data-dots="false" data-loop="true" data-nav = "true" data-margin = "30"  data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
+
+
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('sale', 'desc')->take(5)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                             <div id="tab-3" class="tab-panel">
-                                <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
-                                    
-                                    @foreach(\App\third::orderBy('price', 'desc')->take(5)->get() as $one)
+                                <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
+
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('price', 'desc')->take(5)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                       </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-3 page-top-right">
+            <!-- <div class="col-xs-12 col-sm-3 page-top-right">
                 <div class="latest-deals">
                     <h2 class="latest-deal-title">اخر العروض</h2>
                     <div class="latest-deal-content">
@@ -189,7 +200,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -197,37 +208,35 @@
 <div class="content-page">
     <div class="container">
         <!-- featured category fashion -->
-        <?php $first_id = 8;$elevator = 1;$owlcolor = 'red';?>
-        @include('product.home-owl-block')
+        <?php $elevator = 0;?>
+        @foreach(\App\first::where('status', 1)->orderBy('indx')->get() as $fir)
+	        @if($fir->id == 10)
+	        	<?php $first_id = $fir->id;$elevator++;$owlcolor = 'red';?>
+	        	@include('product.home-owl-block')
+        	@elseif($fir->id == 6)
+        		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'green';?>
+	        	@include('product.home-owl-block')
+        	@elseif($fir->id == 8)
+        		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'blue';?>
+	        	@include('product.home-owl-block')
+        	@elseif($fir->id == 5)
+        		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'orange';?>
+	        	@include('product.home-owl-block')
+        	@elseif($fir->id == 2)
+        		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'gray';?>
+	        	@include('product.home-owl-block')
+	        @endif
+	        
+        @endforeach
+
         
-        <?php $first_id = 3;$elevator = 2;$owlcolor = 'green';?>
-        @include('product.home-owl-block')
-        
-        <?php $first_id = 7;$elevator = 3;$owlcolor = 'orange';?>
-        @include('product.home-owl-block')
-        
-        
-        
-        
-        
-        <!-- end featured category fashion -->
-        <!-- featured category sports -->
-        
-        <!-- end featured category sports-->
-        
-        <!-- featured category electronic -->
-        
-        <!-- end featured category electronic-->
-        <!-- featured category Digital -->
-        
-        <!-- end featured category Digital-->
-        <!-- featured category furniture -->
-        
-        <!-- end featured category furniture-->
-        <!-- featured category jewelry -->
-        
-        <!-- end featured category jewelry-->
-        
+
+
+
+
+
+
+
         <!-- Baner bottom -->
         <div class="row banner-bottom">
             <div class="col-sm-6">
@@ -250,8 +259,8 @@
 
 
 @include('product.home_brands')
-
-<div id="content-wrap">
+ 
+<div id="content-wrap" style="display:none;">
     <div class="container">
         <div id="hot-categories" class="row">
             <div class="col-sm-12 group-title-box">
@@ -259,7 +268,7 @@
                     <span>اقسام الموقع</span>
                 </h2>
             </div>
-            
+
             @foreach(\App\first::orderBy('id', 'desc')->get() as $first)
             <div class="col-sm-6  col-lg-3 cate-box">
                 <div class="cate-tit" >
@@ -271,10 +280,11 @@
                     </div>
                     <div class="div-2" >
                         <a href="#">
-                            <img src="{{ $image_url.$first->image }}" alt="{{$first->title_ar}}" class="hot-cate-img" />
+                            <img src="{{ $image_url.$first->image }}" alt="{{$first->title_ar}}" class="hot-cate-img img-responsive" />
                         </a>
                     </div>
-                    
+
+
                 </div>
                 <div class="cate-content">
                     <ul>
@@ -285,185 +295,17 @@
                         @endif
                         <?php $count++;?>
                         @endforeach
-                        
-                        <!--
-                        <li><a href="#">Headphone, Headset</a></li>
-                        <li><a href="#">Home Audio</a></li>
-                        <li><a href="#">Mp3 Player Accessories</a></li>-->
+
+
                     </ul>
                 </div>
             </div> <!-- /.cate-box -->
             @endforeach
-            <!--<div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Sport & Outdoors</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product2.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Golf Supplies</a></li>
-                        <li><a href="#">Outdoor & Traveling Supplies</a></li>
-                        <li><a href="#">Camping & Hiking</a></li>
-                        <li><a href="#">Fishing</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Fashion</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product3.png') }}" alt="Electronics" class="hot-cate-img"/>
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Batteries & Chargers</a></li>
-                        <li><a href="#">Headphone, Headset</a></li>
-                        <li><a href="#">Home Audio</a></li>
-                        <li><a href="#">Mp3 Player Accessories</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Health & Beauty</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product4.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Bath & Body</a></li>
-                        <li><a href="#">Shaving & Hair Removal</a></li>
-                        <li><a href="#">Fragrances</a></li>
-                        <li><a href="#">Salon & Spa Equipment</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Jewelry & Watches</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product5.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Men Watches</a></li>
-                        <li><a href="#">Wedding Rings</a></li>
-                        <li><a href="#">Earring</a></li>
-                        <li><a href="#">Necklaces</a></li>
-                    </ul>
-                </div>
-            </div> 
-            
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Digital</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product6.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Accessories for iPhone</a></li>
-                        <li><a href="#">Accessories for iPad</a></li>
-                        <li><a href="#">Accessories for Tablet PC</a></li>
-                        <li><a href="#">Tablet PC</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Furniture</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product7.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Batteries & Chargers</a></li>
-                        <li><a href="#">Headphone, Headset</a></li>
-                        <li><a href="#">Home Audio</a></li>
-                        <li><a href="#">Mp3 Player Accessories</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Toys & Hobbies</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product8.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Walkera</a></li>
-                        <li><a href="#">Fpv System & Parts</a></li>
-                        <li><a href="#">RC Cars & Parts</a></li>
-                        <li><a href="#">Helicopters & Part</a></li>
-                    </ul>
-                </div>
-            </div>--><!-- /.cate-box -->    
-            
-                                                               
+
+
+
         </div> <!-- /#hot-categories -->
-        
+
     </div> <!-- /.container -->
 </div>
-
 @endsection

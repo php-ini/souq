@@ -1,15 +1,28 @@
+ 
+<script>
+$(document).ready(function(){
+//	$(".vertical-menu-content2").hide();
+
+    $(".buttop").click(function(){
+        $(".vertical-menu-content2").slideToggle();
+    });
+});
+</script>
+
 
                 <div class="col-sm-3" id="box-vertical-megamenus">
                     <div class="box-vertical-megamenus">
                         <h4 class="title">
                             <span class="title-menu">الأقسام الرئيسية</span>
-                            <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
+                           <!-- <span class="btn-open-mobile buttop pull-right home-page"><i class="fa fa-bars"></i></span> -->
+                                                <span class="buttop pull-left home-page"><i class="fa fa-bars"></i></span>
+
                         </h4>
-                        <div class="vertical-menu-content is-home">
+                        <div class="vertical-menu-content2 is-home">
                             <ul class="vertical-menu-list">
-                                @foreach(\App\first::orderBy('id', 'desc')->get() as $first)
+                                @foreach(\App\first::where('status', 1)->orderBy('indx', 'asc')->get() as $first)
                                 <li>
-                                    <a class="parent" href="/category/{{\App\first::slug($first->id)}}"><img class="icon-menu" alt="{Funky roots}{$first->title_ar}" src="
+                                    <a class="parent" href="/category/{{\App\first::slug($first->id)}}"><img class="icon-menu" alt="{{$first->title_ar}}" src="
 
 @if($first->id == 6)
 {{ asset('data/1.png') }}
@@ -49,13 +62,10 @@
                                                     @endif
                                                     <?php $count2++;?>
                                                     @endforeach
-                                                    <!--
-                                                    <li><a href="#">Coats &amp; Jackets</a></li>
-                                                    <li><a href="#">Blouses &amp; Shirts</a></li>
-                                                    <li><a href="#">Tops &amp; Tees</a></li>
-                                                    <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
-                                                    <li><a href="#">Intimates</a></li>
-                                                    -->
+                                                    
+                                                    
+                                                    
+
                                                 </ul>
                                             </div>
                                             

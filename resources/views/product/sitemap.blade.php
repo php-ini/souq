@@ -38,7 +38,7 @@
                     </div>
                     <div class="div-2" >
                         <a href="#">
-                            <img src="{{ $image_url.$first->image }}" alt="{{$first->title_ar}}" class="hot-cate-img" />
+                            <img src="{{ $image_url.$first->image }}" alt="{{$first->title_ar}}" class="hot-cate-img img-responsive" />
                         </a>
                     </div>
                     
@@ -53,179 +53,12 @@
                         <?php $count++;?>
                         @endforeach
                         
-                        <!--
-                        <li><a href="#">Headphone, Headset</a></li>
-                        <li><a href="#">Home Audio</a></li>
-                        <li><a href="#">Mp3 Player Accessories</a></li>-->
+                        
                     </ul>
                 </div>
             </div> <!-- /.cate-box -->
             @endforeach
-            <!--<div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Sport & Outdoors</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product2.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Golf Supplies</a></li>
-                        <li><a href="#">Outdoor & Traveling Supplies</a></li>
-                        <li><a href="#">Camping & Hiking</a></li>
-                        <li><a href="#">Fishing</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Fashion</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product3.png') }}" alt="Electronics" class="hot-cate-img"/>
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Batteries & Chargers</a></li>
-                        <li><a href="#">Headphone, Headset</a></li>
-                        <li><a href="#">Home Audio</a></li>
-                        <li><a href="#">Mp3 Player Accessories</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Health & Beauty</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product4.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Bath & Body</a></li>
-                        <li><a href="#">Shaving & Hair Removal</a></li>
-                        <li><a href="#">Fragrances</a></li>
-                        <li><a href="#">Salon & Spa Equipment</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Jewelry & Watches</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product5.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Men Watches</a></li>
-                        <li><a href="#">Wedding Rings</a></li>
-                        <li><a href="#">Earring</a></li>
-                        <li><a href="#">Necklaces</a></li>
-                    </ul>
-                </div>
-            </div> 
-            
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Digital</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product6.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Accessories for iPhone</a></li>
-                        <li><a href="#">Accessories for iPad</a></li>
-                        <li><a href="#">Accessories for Tablet PC</a></li>
-                        <li><a href="#">Tablet PC</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Furniture</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product7.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                    
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Batteries & Chargers</a></li>
-                        <li><a href="#">Headphone, Headset</a></li>
-                        <li><a href="#">Home Audio</a></li>
-                        <li><a href="#">Mp3 Player Accessories</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="col-sm-6  col-lg-3 cate-box">
-                <div class="cate-tit" >
-                    <div class="div-1" style="width: 46%;">
-                        <div class="cate-name-wrap">
-                            <p class="cate-name">Toys & Hobbies</p>
-                        </div>
-                        <a href="" class="cate-link" data-ac="flipInX" ><span>shop now</span></a>
-                    </div>
-                    <div class="div-2" >
-                        <a href="#">
-                            <img src="{{ asset('data/cate-product8.png') }}" alt="Electronics" class="hot-cate-img" />
-                        </a>
-                    </div>
-                </div>
-                <div class="cate-content">
-                    <ul>
-                        <li><a href="#">Walkera</a></li>
-                        <li><a href="#">Fpv System & Parts</a></li>
-                        <li><a href="#">RC Cars & Parts</a></li>
-                        <li><a href="#">Helicopters & Part</a></li>
-                    </ul>
-                </div>
-            </div>--><!-- /.cate-box -->    
+             
             
                                                                
         </div> <!-- /#hot-categories -->

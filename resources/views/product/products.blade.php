@@ -7,29 +7,27 @@
     <div class="container" id="columns">
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
-            <a class="home" href="/" title="Return to Home">Home</a>
+            <a class="home" href="/" title="Return to Home">بوروروم</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page"><a class="home" href="/category/{{\App\first::slug($second->first->id)}}" title="{{$second->first->title}}">{{$second->first->title}}</a></span>
+            <span class="navigation_page"><a class="home" href="/category/{{\App\first::slug($second->first->id)}}" title="{{$second->first->title}}">{{$second->first->title_ar}}</a></span>
             
             <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page">{{$second->title}}</span>
+            <span class="navigation_page">{{$second->title_ar}}</span>
         </div>
         <!-- ./breadcrumb -->
         <!-- row -->
         <div class="row">
-            <!-- Left colunm -->
-            @include('layouts.sidebar')
-            <!-- ./left colunm -->
+            
             <!-- Center colunm-->
-            <div class="center_column col-xs-12 col-sm-9" id="center_column">
+            <div class="center_column col-xs-12 col-sm-9 col-sm-push-3" id="center_column">
                 <!-- category-slider -->
                 <div class="category-slider">
                     <ul class="owl-carousel owl-style2" data-dots="false" data-loop="true" data-nav = "true" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1">
                         <li>
-                            <img src="{{ $image_url . $second->image }}" alt="category-slider">
+                            <img class="img-responsive" src="{{ $image_url . $second->image }}" alt="category-slider">
                         </li>
                         <li>
-                            <img src="http://technology.nasa.gov/t2media/tops/img/TOP2-243/ARC-16372-1%20Computer-devices-Mobile-phone1425x780.jpg" alt="category-slider">
+                            <img class="img-responsive" src="http://technology.nasa.gov/t2media/tops/img/TOP2-243/ARC-16372-1%20Computer-devices-Mobile-phone1425x780.jpg" alt="category-slider">
                         </li>
                     </ul>
                 </div>
@@ -99,14 +97,7 @@
                         {!! $products->appends(\Input::except('page'))->render() !!}
                         </nav>
                     </div>
-                    <!--<div class="show-product-item">
-                        <select name="">
-                            <option value="">Show 18</option>
-                            <option value="">Show 20</option>
-                            <option value="">Show 50</option>
-                            <option value="">Show 100</option>
-                        </select>
-                    </div>-->
+                    
                     <div class="sort-product" style="margin-top: 0;">
                         <select name="sort">
                             <option value="date" @if($sort == "date")selected="selected" @endif>الأحدث</option>
@@ -120,6 +111,12 @@
                 </div>
             </div>
             <!-- ./ Center colunm -->
+            
+            
+            <!-- Left colunm -->
+            @include('layouts.sidebar')
+            <!-- ./left colunm -->
+            
         </div>
         <!-- ./row-->
     </div>

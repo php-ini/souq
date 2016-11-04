@@ -1,7 +1,7 @@
 
 
 
-<div class="column col-xs-12 col-sm-3" id="left_column" style="float: right;">
+<div class="column col-xs-12 col-sm-3 col-sm-pull-9" id="left_column" style="">
                 <!-- block category -->
                 <div class="block left-module">
                     <p class="title_block">Today's Deals</p>
