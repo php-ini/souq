@@ -61,6 +61,10 @@ class productController extends Controller
 		$cats = \App\second::where('pid', $id)->get();
 		$first = \App\first::where('id',$id)->first();
 		 // \Request::route()->getName();exit;
+		view()->share('meta_title', $first->meta_title);
+		view()->share('meta_description', $first->meta_description);
+		view()->share('meta_keyword', $first->meta_keyword);
+		
 		return view('product.category', ['id' => $id, 'categories' => $cats, 'first' => $first]);
 	}
 	
@@ -70,6 +74,11 @@ class productController extends Controller
 		$cats = \App\second::where(['id'=> $id])->first();
 		
 		$second = \App\second::where(['pid'=> $cats->pid, 'group_id' => $cats->group_id])->get();
+		
+		
+		view()->share('meta_title', $cats->group->meta_title);
+		view()->share('meta_description', $cats->group->meta_description);
+		view()->share('meta_keyword', $cats->group->meta_keyword);
 		
 		return view('product.group', ['id' => $id, 'second' => $second, 'cat' => $cats]);
 	}
@@ -89,6 +98,11 @@ class productController extends Controller
 		$id = \App\settings::idFromSlug($name);
 		$products = \App\third::where('sid', $id)->where('qty', '>', 0)->where('status_id', 2)->orderBy($sort, $sort_type)->paginate(10);
 		$second = \App\second::where('id',$id)->first();
+		
+		view()->share('meta_title', $second->meta_title);
+		view()->share('meta_description', $second->meta_description);
+		view()->share('meta_keyword', $second->meta_keyword);
+		
 		 // \Request::route()->getName();exit;
 		 // echo \Route::getFacadeRoot()->current()->uri();exit;
 		 // echo \Request::fullUrl();exit;
@@ -116,6 +130,10 @@ class productController extends Controller
 		
 		$id = \App\settings::idFromSlug($name);
 		$product = \App\third::where('id', $id)->first();
+		
+		view()->share('meta_title', $product->meta_title);
+		view()->share('meta_description', $product->meta_description);
+		view()->share('meta_keyword', $product->meta_keyword);
 		
 		// echo $product->second->first->title;exit;
 		
@@ -156,6 +174,10 @@ class productController extends Controller
 		// $products = \App\third::where('sid', $id)->orderBy($sort, $sort_type)->paginate(10);
 		$products = \App\third::where('sid', $id);
 		$second = \App\second::where('id',$id)->first();
+		
+		view()->share('meta_title', $second->meta_title);
+		view()->share('meta_description', $second->meta_description);
+		view()->share('meta_keyword', $second->meta_keyword);
 		
 		$min = \DB::table('thirdlevel')->select(\DB::raw('min(price) as min_price'))->where('sid', $id)->where('qty', '>', 0)->where('status_id', 2)->first();
 		$filter['min_price'] = $min->min_price;
@@ -249,6 +271,11 @@ class productController extends Controller
 		$brand = \App\brands::where('title', $name);
 		if($brand->count() > 0){
 			$br = $brand->first();
+			
+			view()->share('meta_title', $br->meta_title);
+			view()->share('meta_description', $br->meta_description);
+			view()->share('meta_keyword', $br->meta_keyword);
+		
 			$id = $br->id;
 			$prod = \App\third::where('brand', $br->id)->where('qty', '>', 0)->where('status_id', 2)->orderBy($sort, $sort_type)->paginate(10);
 			return view('product.brand', ['id' => $id,'brand' => $br, 'products' => $prod, 'sort' => $sort, 'sort_type' => $sort_type]);

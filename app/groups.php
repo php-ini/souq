@@ -25,7 +25,7 @@ class groups extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'title_ar'];
+    protected $fillable = ['title', 'title_ar', 'meta_title', 'meta_description', 'meta_keyword'];
 	
 	
 	

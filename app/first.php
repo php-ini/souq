@@ -25,7 +25,7 @@ class first extends Model
      *
      * @var array
      */
-    protected $fillable = ['indx','title', 'title_ar', 'description', 'description_ar', 'image','status', 'date'];
+    protected $fillable = ['indx','title', 'title_ar', 'description', 'description_ar', 'image','status', 'date', 'meta_title', 'meta_description', 'meta_keyword'];
 	
 	/**
      * Get the seconds for the main category.

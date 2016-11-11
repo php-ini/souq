@@ -25,7 +25,7 @@ class brands extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'title_ar', 'description', 'description_ar', 'image', 'website'];
+    protected $fillable = ['title', 'title_ar', 'description', 'description_ar', 'image', 'website', 'meta_title', 'meta_description', 'meta_keyword'];
 	
 	
 	

@@ -36,12 +36,16 @@
 
 
 
+    <title>@if(isset($meta_title))
+    	{{ $meta_title }}
+    	@else
+    	{{ \App\settings::where('name', 'title')->first()->value }}
+    	@endif
+    	</title>
 
-    <title>{{ \App\settings::where('name', 'title')->first()->value }}</title>
 
-
-<meta name="description" content="{{ \App\settings::where('id', 9)->first()->value }}">
-<meta name="keywords" content="{{ \App\settings::where('id', 14)->first()->value }}">
+<meta name="description" content="@if(isset($meta_description)) {{ $meta_description }} @else {{ \App\settings::where('id', 9)->first()->value }}@endif">
+<meta name="keywords" content="@if(isset($meta_description)) {{ $meta_description }} @else {{ \App\settings::where('id', 14)->first()->value }}@endif">
 
 
 

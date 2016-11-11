@@ -25,7 +25,7 @@ class second extends Model
      *
      * @var array
      */
-    protected $fillable = ['pid', 'group_id', 'clothes', 'title', 'title_ar', 'description', 'description_ar', 'description_ar', 'image', 'flag', 'date'];
+    protected $fillable = ['pid', 'group_id', 'clothes', 'title', 'title_ar', 'description', 'description_ar', 'description_ar', 'image', 'flag', 'date', 'meta_title', 'meta_description', 'meta_keyword'];
 	
 	public function first(){
 	    return $this->belongsTo('App\first', 'pid');

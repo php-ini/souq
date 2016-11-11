@@ -30,7 +30,8 @@ class third extends Model
      */
     protected $fillable = ['pid', 'sid', 'title', 'title_ar', 'indx', 'description', 'description_ar',
      'description_ar', 'price', 'price_before', 'sale', 'stars', 'brand', 'brand_ar', 'color', 'size',
-      'flag', 'available', 'code', 'video', 'date', 'parent_id', 'uid', 'status_id', 'qty', 'ship_fees', 'site_commission', 'extra_fees'];
+      'flag', 'available', 'code', 'video', 'date', 'parent_id', 'uid', 'status_id', 'qty', 'ship_fees', 'site_commission', 'extra_fees',
+      'meta_title', 'meta_description', 'meta_keyword'];
 	
 	
 	public function parent_product(){
