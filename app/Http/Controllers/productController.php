@@ -74,11 +74,11 @@ class productController extends Controller
 		$cats = \App\second::where(['id'=> $id])->first();
 		
 		$second = \App\second::where(['pid'=> $cats->pid, 'group_id' => $cats->group_id])->get();
+		$group = \App\groups::where(['id' => $cats->group_id])->first();
 		
-		
-		view()->share('meta_title', $cats->group->meta_title);
-		view()->share('meta_description', $cats->group->meta_description);
-		view()->share('meta_keyword', $cats->group->meta_keyword);
+		view()->share('meta_title', $group->meta_title);
+		view()->share('meta_description', $group->meta_description);
+		view()->share('meta_keyword', $group->meta_keyword);
 		
 		return view('product.group', ['id' => $id, 'second' => $second, 'cat' => $cats]);
 	}
