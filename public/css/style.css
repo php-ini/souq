@@ -1951,9 +1951,9 @@ span.notify-right{
 .popular-tabs .product-list li{
       border: 1px solid #eaeaea;
       padding-bottom: 15px;
-      px; */
+     
       overflow: hidden;
-      /* height: 365px; */
+       height: 365px; 
       margin-bottom: 10px;
 }
 /*--------------------
@@ -2149,7 +2149,7 @@ span.notify-right{
     vertical-align: middle;
     font-size: 13px;
     /*text-shadow: 1px 1px 0 #000;*/
-    font-size: 15px
+    font-size: 13px
 }
 .product-list li .product-name{
     padding-bottom: 5px;
@@ -4043,7 +4043,7 @@ span.notify-right{
 }
 
 #product .pb-right-column .form-option .attributes input{
-  max-width: 50px;
+  max-width: 60px;
   padding: 0 5px;
 }
 #product .pb-right-column .form-option .list-color{

@@ -60,7 +60,7 @@
                             <!-- tab product -->
                             <div class="tab-panel active" id="{{$owlname}}-1">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where('pid', $first_id)->orderBy('price', 'desc')->take(20)->get() as $one)
+                                    @foreach(\App\third::where('pid', $first_id)->orderBy('price', 'desc')->take(15)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
                                 </ul>
@@ -68,7 +68,7 @@
                             <!-- tab product -->
                             <div class="tab-panel" id="{{$owlname}}-2">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where('pid', $first_id)->orderBy('views', 'desc')->take(20)->get() as $one)
+                                    @foreach(\App\third::where('pid', $first_id)->orderBy('views', 'desc')->take(15)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
                                 </ul>
@@ -79,7 +79,7 @@
 		                    @if($second->thirds->count() > 0)
                             <div class="tab-panel" id="{{$owlname}}-{{$i}}">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where(['sid'=>$second->id])->orderBy('views', 'desc')->take(20)->get() as $one)
+                                    @foreach(\App\third::where(['sid'=>$second->id])->orderBy('views', 'desc')->take(15)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
                                 </ul>
@@ -88,6 +88,7 @@
 		                    @endif
 		                    @endforeach
                         </div>
+
 
                     </div>
                 </div>

@@ -95,7 +95,7 @@
                       <div class="tab-container">
                             <div id="tab-1" class="tab-panel active">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('date', 'desc')->take(20)->get() as $one)
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('date', 'desc')->take(15)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
 
@@ -108,7 +108,7 @@
                                 <ul class="product-list owl-carousel"  data-dots="false" data-loop="true" data-nav = "true" data-margin = "30"  data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
 
 
-                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('sale', 'desc')->take(20)->get() as $one)
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('sale', 'desc')->take(15)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
 
@@ -117,7 +117,7 @@
                             <div id="tab-3" class="tab-panel">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
 
-                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('price', 'desc')->take(20)->get() as $one)
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('price', 'desc')->take(15)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
 
