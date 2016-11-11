@@ -18,10 +18,11 @@
         <!-- row -->
         <div class="row">
             <!-- Left colunm -->
-            @include('layouts.sidebar')
+            
+            
             <!-- ./left colunm -->
             <!-- Center colunm-->
-            <div class="center_column col-xs-12 col-sm-9" id="center_column">
+            <div class="center_column col-xs-12 col-sm-9 col-sm-push-3" id="center_column">
                 <!-- category-slider -->
                 <div class="category-slider" style="text-align: center;">
                     <ul class="">
@@ -120,6 +121,10 @@
                 </div>
             </div>
             <!-- ./ Center colunm -->
+            
+            @include('layouts.sidebar')
+            
+            
         </div>
         <!-- ./row-->
     </div>

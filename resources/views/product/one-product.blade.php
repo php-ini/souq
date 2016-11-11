@@ -15,9 +15,10 @@
 								
 								?>
                             	>
+                            	
                                 <div class="left-block">
                                     <a href="/product/{{\App\third::slug($one->id)}}">
-                                        <img class="img-responsive" alt="product" src="@if(\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->count() > 0){{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->first()->image }}
+                                        <img class="img-responsive" alt="product" src="@if(\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->count() > 0){{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->first()->thumb }}
                                                 @else{{asset('images/not_found.jpg')}}@endif" onerror="this.src='{{asset('images/not_found.jpg')}}';" />
                                     </a>
                                     <div class="quick-view">

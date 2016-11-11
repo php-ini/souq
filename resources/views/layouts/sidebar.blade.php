@@ -4,97 +4,54 @@
 <div class="column col-xs-12 col-sm-3 col-sm-pull-9" id="left_column" style="">
                 <!-- block category -->
                 <div class="block left-module">
-                    <p class="title_block">Today's Deals</p>
+                    <p class="title_block">عروض اليوم</p>
                     <div class="block_content">
                         <!-- layered -->
                         <div class="layered">
                             <div class="layered-content">
                                 <div class="today-deals">
                                     <ul class="deals-product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":1},"600":{"items":3,"margin":20},"1000":{"items":1}}'>
+                                        @foreach(\App\image::where(['type'=> 'third', 'status'=>1])->orderBy(\DB::raw('RAND()'))->take(3)->get() as $im)
                                         <li>
                                             <div class="product-conatainer">
                                                 <div class="product-thumb">
-                                                    <a href="#">
-                                                        <img src="{{ asset('data/ld2.jpg') }}" alt="Product">
-                                                    </a>
+                                                    <a href="/product/{{\App\third::slug($im->third->id)}}"><img class="img-responsive" src="{{ $image_url . $im->image}}" alt="{{$im->third->title_ar}}" title="{{$im->third->title_ar}}"></a>
                                                 </div>
                                                 <div class="product-info">
                                                     <div class="show-count-down">
                                                         <span class="countdown-lastest" data-y="2017" data-m="7" data-d="1" data-h="00" data-i="00" data-s="00"></span>
                                                     </div>
                                                     <h5 class="product-name">
-                                                        <a href="#"> Jackets and coats</a>
+                                                        <a href="/product/{{\App\third::slug($im->third->id)}}"> {{$im->third->title_ar}}</a>
                                                     </h5>
                                                     <div class="product-meta">
-                                                        <span class="price">$38,95</span>
-                                                        <span class="old-price">$52,00</span>
-                                                        <span class="star">
+                                                        <span class="price" style="direction: rtl;">{{$im->third->price}}{{$currency}}</span>
+                                                        @if($im->third->price_before > 0 && $im->third->sale > 0)
+                                                        <span class="old-price" style="direction: rtl;float: right;">{{$im->third->price_before}}{{$currency}}</span>
+                                                        @endif
+                                                        <!--<span class="star">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star-half-o"></i>
-                                                        </span>
+                                                        </span>-->
+                                                        <div class="star">
+					                                        @for($s=1; $s<=5; $s++)
+					                                    	@if($im->third->stars >= $s)
+					                                    	<i class="fa fa-star"></i>
+					                                    	@else
+					                                    	<i class="fa fa-star-o"></i>
+					                                    	@endif
+					                                    	@endfor
+					                                    </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="product-conatainer">
-                                                <div class="product-thumb">
-                                                    <a href="#">
-                                                        <img src="{{ asset('data/ld1.jpg') }}" alt="Product">
-                                                    </a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="show-count-down">
-                                                        <span class="countdown-lastest" data-y="2017" data-m="7" data-d="1" data-h="00" data-i="00" data-s="00"></span>
-                                                    </div>
-                                                    <h5 class="product-name">
-                                                        <a href="#"> Jackets and coats</a>
-                                                    </h5>
-                                                    <div class="product-meta">
-                                                        <span class="price">$38,95</span>
-                                                        <span class="old-price">$52,00</span>
-                                                        <span class="star">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="product-conatainer">
-                                                <div class="product-thumb">
-                                                    <a href="#">
-                                                        <img src="{{ asset('data/ld3.jpg') }}" alt="Product">
-                                                    </a>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="show-count-down">
-                                                        <span class="countdown-lastest" data-y="2015" data-m="7" data-d="1" data-h="00" data-i="00" data-s="00"></span>
-                                                    </div>
-                                                    <h5 class="product-name">
-                                                        <a href="#"> Jackets and coats</a>
-                                                    </h5>
-                                                    <div class="product-meta">
-                                                        <span class="price">$38,95</span>
-                                                        <span class="old-price">$52,00</span>
-                                                        <span class="star">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-o"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @endforeach
+                                        
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -134,13 +91,7 @@
                                     @endforeach
                                     </ul>
                                     
-                                    <!--<li>
-                                        <input type="checkbox" id="c2" name="cc" />
-                                        <label for="c2">
-                                        <span class="button"></span>
-                                        T-shirts<span class="count">(10)</span>
-                                        </label>
-                                    </li>-->
+                                    
                                     
                                     
                                 </ul>
@@ -173,29 +124,7 @@
                                 <div class="amount-range-price" style="direction: rtl;text-align: center;">مدى السعر: {{$filter['sel_min_price']}} - {{$filter['sel_max_price']}}</div>
                                 <input name="min_price" value="{{$filter['sel_min_price']}}" type="hidden" />
                                 <input name="max_price" value="{{$filter['sel_max_price']}}" type="hidden" />
-                                <!--<ul class="check-box-list">
-                                    <li>
-                                        <input type="checkbox" id="p1" name="price_range[]" />
-                                        <label for="p1">
-                                        <span class="button"></span>
-                                        $20 - $50<span class="count">(0)</span>
-                                        </label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="p2" name="cc" />
-                                        <label for="p2">
-                                        <span class="button"></span>
-                                        $50 - $100<span class="count">(0)</span>
-                                        </label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="p3" name="cc" />
-                                        <label for="p3">
-                                        <span class="button"></span>
-                                        $100 - $250<span class="count">(0)</span>
-                                        </label>   
-                                    </li>
-                                </ul>-->
+                                
                             </div>
                             <!-- ./filter price -->
                             <!-- filter color -->
@@ -218,54 +147,7 @@
                                     </li>
                                     <?php $cc++;?>
                                     @endforeach
-                                    <!--<li>
-                                        <input type="checkbox" id="color1" name="cc" />
-                                        <label style=" background:#aab2bd;" for="color1"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color2" name="cc" />
-                                        <label style=" background:#cfc4a6;" for="color2"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color3" name="cc" />
-                                        <label style=" background:#aab2bd;" for="color3"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color4" name="cc" />
-                                        <label style=" background:#fccacd;" for="color4"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color5" name="cc" />
-                                        <label style="background:#964b00;" for="color5"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color6" name="cc" />
-                                        <label style=" background:#faebd7;" for="color6"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color7" name="cc" />
-                                        <label style=" background:#e84c3d;" for="color7"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color8" name="cc" />
-                                        <label style=" background:#c19a6b;" for="color8"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color9" name="cc" />
-                                        <label style=" background:#f39c11;" for="color9"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color10" name="cc" />
-                                        <label style=" background:#5d9cec;" for="color10"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color11" name="cc" />
-                                        <label style=" background:#a0d468;" for="color11"><span class="button"></span></label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="color12" name="cc" />
-                                        <label style=" background:#f1c40f;" for="color12"><span class="button"></span></label>   
-                                    </li>-->
+                                    
 
                                 </ul>
                             </div>
@@ -296,34 +178,7 @@
                                     </li>
                                     <?php $bb++;?>
                                     @endforeach
-                                    <!--li>
-                                        <input type="checkbox" id="brand2" name="cc" />
-                                        <label for="brand2">
-                                        <span class="button"></span>
-                                        Mamypokon<span class="count">(0)</span>
-                                        </label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="brand3" name="cc" />
-                                        <label for="brand3">
-                                        <span class="button"></span>
-                                        Pamperson<span class="count">(0)</span>
-                                        </label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="brand4" name="cc" />
-                                        <label for="brand4">
-                                        <span class="button"></span>
-                                        Pumano<span class="count">(0)</span>
-                                        </label>   
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="brand5" name="cc" />
-                                        <label for="brand5">
-                                        <span class="button"></span>
-                                        AME<span class="count">(0)</span>
-                                        </label>   
-                                    </li>-->
+                                    
                                 </ul>
                             </div>
                             <!-- ./filter brand -->
@@ -349,12 +204,7 @@
                                     </li>
                                     <?php $ss++;?>
                                     @endforeach
-                                    <!--<li>
-                                        <input type="checkbox" id="size2" name="cc" />
-                                        <label for="size2">
-                                        <span class="button"></span>XXL
-                                        </label>   
-                                    </li>-->
+                                    
                                     
                                 </ul>
                             </div>
@@ -391,27 +241,33 @@
                 <!--./left silde-->
                 <!-- SPECIAL -->
                 <div class="block left-module">
-                    <p class="title_block">SPECIAL PRODUCTS</p>
+                    <p class="title_block">منتجات خاصة</p>
                     <div class="block_content">
                         <ul class="products-block">
+                        	<?php
+                        	$one = \App\third::orderBy('views', 'desc')->first();
+                        	?>
                             <li>
                                 <div class="products-block-left">
-                                    <a href="#">
-                                        <img src="{{ asset('data/product-100x122.jpg') }}" alt="SPECIAL PRODUCTS">
-                                    </a>
+                                    <a href="/product/{{\App\third::slug($one->id)}}">
+                                            <img class="img-responsive" alt="{{$one->title_ar}}" src="@if(\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->count() > 0){{ $image_url.\App\image::where(['type' =>'third', 'status'=>1, 'pid' => $one->id])->first()->image }}
+                                                @else{{asset('images/not_found.jpg')}}@endif" onerror="this.src='{{asset('images/not_found.jpg')}}';" />
+                                        </a>
                                 </div>
                                 <div class="products-block-right">
                                     <p class="product-name">
-                                        <a href="#">Woman Within Plus Size Flared</a>
+                                        <a href="/product/{{\App\third::slug($one->id)}}">{{$one->title_ar}}</a>
                                     </p>
-                                    <p class="product-price">$38,95</p>
-                                    <p class="product-star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </p>
+                                    <p class="product-price">{{$one->price}}{{$currency}}</p>
+                                    <div class="product-star">
+                                        @for($s=1; $s<=5; $s++)
+                                    	@if($one->stars >= $s)
+                                    	<i class="fa fa-star"></i>
+                                    	@else
+                                    	<i class="fa fa-star-o"></i>
+                                    	@endif
+                                    	@endfor
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -424,33 +280,7 @@
                 </div>
                 <!-- ./SPECIAL -->
                 <!-- TAGS -->
-                <!--<div class="block left-module">
-                    <p class="title_block">TAGS</p>
-                    <div class="block_content">
-                        <div class="tags">
-                            <a href="#"><span class="level1">actual</span></a>
-                            <a href="#"><span class="level2">adorable</span></a>
-                            <a href="#"><span class="level3">change</span></a>
-                            <a href="#"><span class="level4">consider</span></a>
-                            <a href="#"><span class="level3">phenomenon</span></a>
-                            <a href="#"><span class="level4">span</span></a>
-                            <a href="#"><span class="level1">spanegs</span></a>
-                            <a href="#"><span class="level5">spanegs</span></a>
-                            <a href="#"><span class="level1">actual</span></a>
-                            <a href="#"><span class="level2">adorable</span></a>
-                            <a href="#"><span class="level3">change</span></a>
-                            <a href="#"><span class="level4">consider</span></a>
-                            <a href="#"><span class="level2">gives</span></a>
-                            <a href="#"><span class="level3">change</span></a>
-                            <a href="#"><span class="level2">gives</span></a>
-                            <a href="#"><span class="level1">good</span></a>
-                            <a href="#"><span class="level3">phenomenon</span></a>
-                            <a href="#"><span class="level4">span</span></a>
-                            <a href="#"><span class="level1">spanegs</span></a>
-                            <a href="#"><span class="level5">spanegs</span></a>
-                        </div>
-                    </div>
-                </div>-->
+                
                 <!-- ./TAGS -->
                 <!-- Testimonials -->
                 <div class="block left-module">

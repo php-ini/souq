@@ -226,14 +226,15 @@
         		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'gray';?>
 	        	@include('product.home-owl-block')
         	@elseif($fir->id == 11)
-    		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'orange';?>
+    		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'purple';?>
         	@include('product.home-owl-block')
         	@elseif($fir->id == 12)
-    		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'gray';?>
+    		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'dark-blue';?>
         	@include('product.home-owl-block')
 	        @endif 
 	        
         @endforeach
+
 
         
 

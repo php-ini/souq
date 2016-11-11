@@ -10,12 +10,16 @@
                 @foreach(\App\brands::where('id', '<>', 15)->get() as $brand)
                 @if(count($brand->thirds) > 0)
                 <?php //echo"<pre>";print_r($brand->thirds()->toArray());exit;?>
-                <li data-tab="showcase-{{$i}}" class="item @if($i == 1)active @endif"><img src="{{ $image_url . $brand->image }}" alt="logo" class="item-img img-responsive" /></li>
+                <li onclick="location.href='/brand/{{$brand->title}}';return;" data-tab="showcase-{{$i}}" class="item @if($i == 1)active @endif"><img src="{{ $image_url . $brand->image }}" alt="logo" class="item-img img-responsive" /></li>
                 <?php $i++;?>
                 @endif
                 @endforeach
 
             </ul>
+            
+            
+            
+            <!--
             <div class="brand-showcase-content">
 
             	<?php $i = 1;?>
@@ -86,6 +90,7 @@
 
 
             </div>
+            -->
         </div>
 
     </div>

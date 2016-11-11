@@ -2005,7 +2005,8 @@ span.notify-right{
 /*----------------
 [8. Product]
 */
-.product-list li{height: 350px;}
+.product-list.grid li{height: 350px;}
+.product-list.list li{height: 270px;}
 .product-list li:hover .add-to-cart{
     bottom: 0;
 }
@@ -2147,7 +2148,7 @@ span.notify-right{
     display: inline-block;
     vertical-align: middle;
     font-size: 13px;
-    text-shadow: 1px 1px 0 #000;
+    /*text-shadow: 1px 1px 0 #000;*/
     font-size: 15px
 }
 .product-list li .product-name{
@@ -2538,9 +2539,9 @@ span.notify-right{
     padding-right: 10px;
 }
 .brand-showcase-box{
-   border-bottom: 1px solid #eaeaea;
+   /*border-bottom: 1px solid #eaeaea; MAHMOUD
    border-right: 1px solid #eaeaea;
-   border-left: 1px solid #eaeaea;
+   border-left: 1px solid #eaeaea;*/
    padding-bottom: 30px;
    margin-bottom: 10px;
 }
@@ -3526,7 +3527,13 @@ span.notify-right{
 .view-product-list .product-list.grid{
   margin-top: -10px;
 }
-.product-list .product-container{
+.product-list.list .product-container{
+  border: 1px solid #eaeaea;
+  overflow: hidden;
+  padding-bottom: 10px;
+  
+}
+.product-list.grid .product-container{
   border: 1px solid #eaeaea;
   overflow: hidden;
   padding-bottom: 10px;
@@ -6272,19 +6279,40 @@ h5 a {
  
 /*#394264*/
  /*#BE7EA4*/
-.nav-menu-purble{
-	 height: 53px;
+.nav-menu-purple{
+	height: 53px;
     background:  #BE7EA4;
     border-radius: 0;
     padding: 0;
     padding-bottom: 3px;
     margin: 0;
 }
+.nav-menu-purple .navbar-collapse{
+    background: #fff;
+}
+.nav-menu-purple li a:hover,
+.nav-menu-purple li.active a,
+.nav-menu-purple li.selected a{
+    background: #BE7EA4;
+    color: #fff;
+}
+
+
 .nav-menu-dark-blue{
-	 height: 53px;
+	height: 53px;
     background:  #394264;
     border-radius: 0;
     padding: 0;
     padding-bottom: 3px;
     margin: 0;
+}
+
+.nav-menu-dark-blue .navbar-collapse{
+    background: #fff;
+}
+.nav-menu-dark-blue li a:hover,
+.nav-menu-dark-blue li.active a,
+.nav-menu-dark-blue li.selected a{
+    background: #394264;
+    color: #fff;
 }
