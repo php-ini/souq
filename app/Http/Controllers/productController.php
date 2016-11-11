@@ -75,7 +75,7 @@ class productController extends Controller
 		
 		$second = \App\second::where(['pid'=> $cats->pid, 'group_id' => $cats->group_id])->get();
 		$group = \App\groups::where(['id' => $cats->group_id])->first();
-		
+		// echo $group->id;exit;
 		view()->share('meta_title', $group->meta_title);
 		view()->share('meta_description', $group->meta_description);
 		view()->share('meta_keyword', $group->meta_keyword);
