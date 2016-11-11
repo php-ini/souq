@@ -31,35 +31,35 @@
     </div>
 </div>
 <!-- END Home slideder-->
-<div class="container my-margin-top" style="padding:0px;">
+<!-- <div class="container my-margin-top" style="padding:0px;">
 <div class="col-xs-12 hidden-sm hidden-md hidden-lg ">
 	<a href="#"><img class="img-responsive" alt="Funky roots" src="{{ asset('images/mobile-ads.jpg') }}"/></a>
 </div>
 
-</div>
+</div> -->
 <!-- END mobile ads-->
 <!-- servives -->
 <div class="container">
     <div class="service " style="margin-top: 10px;">
-        <div class="col-xs-12 col-sm-3 service-item">
+        <div class="col-xs-12 col-sm-6 service-item">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s1.png') }}" />
             </div>
             <div class="info">
                 <a href="#"><h3>شحن مجانا</h3></a>
-                <span>شحن مجاني للمشتريات فوق 500 ريال</span>
+                <span>شحن مجاني للمشتريات فوق 500 ريال شحن مجاني للمشتريات فوق 500 ريال شحن مجاني للمشتريات فوق 500 ريالشحن مجاني للمشتريات فوق 500 ريال</span>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-3 service-item">
+        <div class="col-xs-12 col-sm-6 service-item">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s2.png') }}" />
             </div>
             <div class="info" style="direction: rtl;">
                 <a href="#"><h3>30 يوم ضمان</h3></a>
-                <span>ضمان استرجاع النقود خلال 30 يوم</span>
+                <span>ضمان استرجاع النقود خلال 30 يوم ضمان استرجاع النقود خلال 30 يومضمان استرجاع النقود خلال 30 يومضمان استرجاع النقود خلال 30 يومضمان استرجاع النقود خلال 30 يومضمان استرجاع النقود خلال 30 يوم</span>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-3 service-item hidden-xs  ">
+        <!-- <div class="col-xs-6 col-sm-3 service-item hidden-xs  ">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s3.png') }}" />
             </div>
@@ -68,16 +68,16 @@
                 <a href="#"><h3>دعم فني 24/7</h3></a>
                 <span>استشارة متواجدة دائما</span>
             </div>
-        </div>
-        <div class="col-xs-6 col-sm-3 service-item hidden-xs">
+        </div> -->
+        <!-- <div class="col-xs-6 col-sm-3 service-item hidden-xs">
             <div class="icon">
                 <img alt="services" src="{{ asset('data/s4.png') }}" />
             </div>
             <div class="info">
-                <a href="#"><h3>تسوق أمن</h3></a>
+                <a href="#"><h3>تسوق أمن</h3></a>  
                 <span>ضمان التسوق الامن</span>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <!-- end services -->
@@ -95,7 +95,7 @@
                       <div class="tab-container">
                             <div id="tab-1" class="tab-panel active">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('date', 'desc')->take(5)->get() as $one)
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('date', 'desc')->take(20)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
 
@@ -108,7 +108,7 @@
                                 <ul class="product-list owl-carousel"  data-dots="false" data-loop="true" data-nav = "true" data-margin = "30"  data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
 
 
-                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('sale', 'desc')->take(5)->get() as $one)
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('sale', 'desc')->take(20)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
 
@@ -117,7 +117,7 @@
                             <div id="tab-3" class="tab-panel">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "30" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
 
-                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('price', 'desc')->take(5)->get() as $one)
+                                    @foreach(\App\third::where('qty', '>', 0)->where('status_id', 2)->orderBy('price', 'desc')->take(20)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
 
@@ -225,7 +225,13 @@
         	@elseif($fir->id == 2)
         		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'gray';?>
 	        	@include('product.home-owl-block')
-	        @endif
+        	@elseif($fir->id == 11)
+    		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'orange';?>
+        	@include('product.home-owl-block')
+        	@elseif($fir->id == 12)
+    		<?php $first_id = $fir->id;$elevator++;$owlcolor = 'gray';?>
+        	@include('product.home-owl-block')
+	        @endif 
 	        
         @endforeach
 

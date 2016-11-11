@@ -8,6 +8,8 @@
               	$icon[10] = 'fa-heart-o';
               	$icon[5] = 'fa-key';
               	$icon[2] = 'fa-plug';
+              	$icon[11] = 'fa-flask';
+              	$icon[12] = 'fa-bell-o';
               	?>
                 <!-- Brand and toggle get grouped for better mobile display -->
                   <div class="navbar-brand"><a href="#"><span  class="fa {{$icon[$first_id]}} fa-2x"></span>
@@ -58,7 +60,7 @@
                             <!-- tab product -->
                             <div class="tab-panel active" id="{{$owlname}}-1">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where('pid', $first_id)->orderBy('price', 'desc')->take(5)->get() as $one)
+                                    @foreach(\App\third::where('pid', $first_id)->orderBy('price', 'desc')->take(20)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
                                 </ul>
@@ -66,7 +68,7 @@
                             <!-- tab product -->
                             <div class="tab-panel" id="{{$owlname}}-2">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where('pid', $first_id)->orderBy('views', 'desc')->take(5)->get() as $one)
+                                    @foreach(\App\third::where('pid', $first_id)->orderBy('views', 'desc')->take(20)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
                                 </ul>
@@ -77,7 +79,7 @@
 		                    @if($second->thirds->count() > 0)
                             <div class="tab-panel" id="{{$owlname}}-{{$i}}">
                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav = "true" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-responsive='{"0":{"items":2},"600":{"items":3},"1000":{"items":4}}'>
-                                    @foreach(\App\third::where(['sid'=>$second->id])->orderBy('views', 'desc')->take(5)->get() as $one)
+                                    @foreach(\App\third::where(['sid'=>$second->id])->orderBy('views', 'desc')->take(20)->get() as $one)
                                     @include('product.owl-one')
                                     @endforeach
                                 </ul>

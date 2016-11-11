@@ -76,10 +76,10 @@
 						
 						<div class="col-sm-6">
                             
-                            <label for="email_address_1" class="required">المحافظة</label>
+                            <label for="email_address_1" class="required">المدينة</label>
                             <!--<input class="input form-control" type="text" name="" id="email_address_1">-->
 							<select name="state" class="states input form-control" id="stateId">
-							<option value="">اختر المحافظة</option>
+							<option value="">اختر المدينة</option>
 							</select>
                         </div><!--/ [col] -->
 
@@ -91,12 +91,12 @@
 
                         <div class="col-sm-6" style="float: right;">
 
-                            <label for="address_1" class="required">المدينة</label>
+                            <label for="address_1" class="required">المحافظة</label>
                             <!--<input class="input form-control" type="text" name="" id="address_1">-->
 													
 				
 							<select name="city" class="cities input form-control" id="cityId">
-							<option value="">اختر المدينة</option>
+							<option value="">اختر المحافظة</option>
 							</select>
 
 <script src="/js/location.js"></script>

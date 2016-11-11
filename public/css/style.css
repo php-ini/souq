@@ -987,7 +987,7 @@ img.alignright{
       font-family: "FontAwesome";
       font-size: 17px;
       vertical-align: 0;
-      padding-right: 5px;
+      /* padding-right: 5px; */
       font-weight: bold;
 }
 .top-header .dropdown{
@@ -1845,10 +1845,11 @@ span.notify-right{
 .nav-menu-gray li a:hover,
 .nav-menu-gray li.active a,
 .nav-menu-gray li.selected a{
-    background: #6c6856;
+    background: #6d6855;
     color: #fff;
 }
 /**blue2 nav**/
+
 .nav-menu-blue2{
     height: 53px;
     background: #669900;
@@ -1966,23 +1967,26 @@ span.notify-right{
     margin-top: 20px;
     float: right;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 .service .service-item{
     padding-right: 35px;
     border-left: 1px solid #ccc;
     overflow: hidden;
-
+    margin: 0 auto;
 }
 .service .service-item .icon{
     width: 40px;
-    height: 40px;
-    float: right;
+    /* height: 40px; */
+    /* float: right; */
+    margin: 0 auto;
 }
 .service .service-item .info{
-    padding-right: 15px;
-    margin-right: 40px;
+    /* padding-right: 15px; */
+    /* margin-right: 40px; */
     padding-top: 2px;
+    text-align: justify;
+    line-height: 20px;
 }
 .service .service-item h3{
     margin: 0;
@@ -1990,6 +1994,8 @@ span.notify-right{
     text-transform: uppercase;
     margin-bottom: 5px;
     color: #F36;
+    text-align: center;
+    margin: 10px 0px;
 }
 .service .service-item:last-child{
     border-left: none;
@@ -6243,7 +6249,7 @@ ul.dropdown-menu.mega_dropdown a:hover {
 	background: #F36; 
     color: #fff;
 }
-.brand img {
+.brand img {  
     display: none !important;
 }
  .trademark-product .product-item {
@@ -6254,4 +6260,31 @@ ul.dropdown-menu.mega_dropdown a:hover {
 }
 h5 a {
 	color: #000;
+}
+.top-header a.current-open:after {
+    content: "\f107" !important;
+    font-family: "FontAwesome" !important;
+    font-size: 15px !important;
+    vertical-align: 0;
+    padding-left: 2px;
+    font-weight: bold;
+}
+ 
+/*#394264*/
+ /*#BE7EA4*/
+.nav-menu-purble{
+	 height: 53px;
+    background:  #BE7EA4;
+    border-radius: 0;
+    padding: 0;
+    padding-bottom: 3px;
+    margin: 0;
+}
+.nav-menu-dark-blue{
+	 height: 53px;
+    background:  #394264;
+    border-radius: 0;
+    padding: 0;
+    padding-bottom: 3px;
+    margin: 0;
 }

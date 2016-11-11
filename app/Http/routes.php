@@ -21,6 +21,7 @@ Route::post('quick_view', ['as' => 'quick_view', 'uses' => 'productController@qu
 Route::post('addTo', ['as' => 'addTo', 'uses' => 'productController@addTo']);
 Route::post('remove', ['as' => 'removeCart', 'uses' => 'productController@removeCart']);
 Route::post('getCart', ['as' => 'getCart', 'uses' => 'productController@getCart']);
+Route::post('getCart2', ['as' => 'getCart', 'uses' => 'productController@getCart']);
 Route::post('getInfo', ['as' => 'getInfo', 'uses' => 'profileController@getInfo']);
 Route::put('checkout', ['as' => 'checkoutStore', 'uses' => 'profileController@checkoutStore','middleware' => 'auth']);
 Route::get('orderComplete/{id}', ['as' => 'orderComplete', 'uses' => 'profileController@orderComplete','middleware' => 'auth']);
@@ -75,6 +76,8 @@ Route::get('privacy', ['as' => 'privacy', 'uses' => 'profileController@about']);
 Route::get('terms', ['as' => 'terms', 'uses' => 'profileController@about']);
 Route::get('returns', ['as' => 'returns', 'uses' => 'profileController@about']);
 Route::get('careers', ['as' => 'careers', 'uses' => 'profileController@about']);
+Route::get('sellers_rules', ['as' => 'sellers_rules', 'uses' => 'profileController@about']);
+Route::get('selling_fees', ['as' => 'selling_fees', 'uses' => 'profileController@about']);
 Route::get('google80dc3a28d61d7b05.html', ['as' => 'google', 'uses' => 'profileController@google']);
 
 

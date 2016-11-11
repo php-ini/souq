@@ -17,6 +17,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" />
     <script type="text/javascript" src="{{ asset('lib/jquery/jquery-1.11.2.min.js') }}"></script>
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+    
 
     <style>
 .homeslider{ visibility:hidden; }
@@ -47,15 +51,7 @@
 </head>
 <body class="home">
 <!-- TOP BANNER -->
-<!--<div id="top-banner" class="top-banner">
-    <div class="bg-overlay"></div>
-    <div class="container">
-        <h1>Special Offer!</h1>
-        <h2>Additional 40% OFF For Men & Women Clothings</h2>
-        <span>This offer is for online only 7PM to middnight ends in 30th July 2015</span>
-        <span class="btn-close"></span>
-    </div>
-</div>-->
+
 
 @include('layouts.header')
 

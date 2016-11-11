@@ -20,6 +20,10 @@
 		  			.done(function( data2 ) {
 		  				$("#cart-block").html(data2);
 		  			});
+		  			$.post( "/getCart2", { '_token': $("input[name='_token']").val() })
+		  			.done(function( data2 ) {
+		  				$(".mobile_cart").html(data2);
+		  			});
 		    	}
 		    	
 		    }
@@ -34,17 +38,18 @@
 		
 		$.post( "/remove", {productId: productId, type: type, '_token': $("input[name='_token']").val() })
 		  .done(function( data ) {
-		    // alert( "Data Loaded: " + data );
 		    if(data.status == "success"){
-		    	
 	    		$.post( "/getCart", { '_token': $("input[name='_token']").val() })
 	  			.done(function( data2 ) {
 	  				$("#cart-block").html(data2);
 	  			});
-		    	
-		    	
+	  			$.post( "/getCart2", { '_token': $("input[name='_token']").val() })
+	  			.done(function( data2 ) {
+	  				$(".mobile_cart").html(data2);
+	  			});
 		    }
 		  });
+		  
 	});
 	
 	
@@ -96,9 +101,19 @@
                         <div class="col-sm-4 col-xs-6">
                             <div class="introduce-title">بيع منتجاتك</div>
                             <ul id = "introduce-support"  class="introduce-list">
-                                <li><a href="/#">ابدا البيع</a></li>
-                                <li><a href="/#">شروط واحكام البائع</a></li>
-                                <li><a href="/#">رسوم البيع</a></li>
+                            	
+                            	@if(\Auth::check())
+				                @if(\Auth::user()->is_provider == 1)
+				                <li><a href="http://provider.pororom.com/?token={{$encrypted}}">ابدا البيع</a></li>
+				                @else
+				                <li><a href="/contact">اطلب حساب تاجر</a></li>
+				                @endif
+				                @else
+				                <li><a href="/login">ابدا البيع</a></li>
+				                @endif
+                                <!--<li><a href="/#">ابدا البيع</a></li>-->
+                                <li><a href="/sellers_rules">شروط واحكام البائع</a></li>
+                                <li><a href="/selling_fees">رسوم البيع</a></li>
                                 
                             </ul>
                         </div>

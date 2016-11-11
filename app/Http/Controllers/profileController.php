@@ -90,10 +90,12 @@ class profileController extends Controller
 			$id = 29;
 		}elseif(\Request::route()->getName() == "careers"){
 			$id = 41;
-		}elseif(\Request::route()->getName() == "about5565"){
-			
+		}elseif(\Request::route()->getName() == "sellers_rules"){
+			$id = 42;
+		}elseif(\Request::route()->getName() == "selling_fees"){
+			$id = 43;
 		}else{
-			aboty(404);
+			abort(404);
 		}
 		$about = \DB::table('crud')->where(['id' => $id])->first();
 		return view('about', ['about' => $about, 'id' => $id]);

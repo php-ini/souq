@@ -21,8 +21,7 @@
                <li><a href="/products/{{\App\second::slug($second->id)}}">{{$second->title_ar}}</a></li>
                @endforeach
                
-               <!--<li><a href="#">بنطلون</a></li>
-               <li><a href="#">قميص</a></li>-->
+               
              </ul>
            </li>
            @endforeach
@@ -50,6 +49,27 @@
 
         </ul>-->
         </div>
+        
+        
+        <?php
+        
+        if(\Auth::check()){
+	        $token['session_id'] = \Session::getId();
+			$token['user_id'] = \Auth::user()->id;
+			$json_token = json_encode($token);
+			
+			$encrypted = base64_encode($json_token);
+			$dec = json_decode(base64_decode($encrypted), true);
+		}
+//$tokens = \Session::getId() . "---" . \Auth::user()->id;
+//$key = 'MahmoudandDwidar';
+
+//To Encrypt:
+//$encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $tokens, MCRYPT_MODE_ECB);
+
+
+
+?>
         
         
         
@@ -99,8 +119,16 @@
             <div class="support-link">
                 <a href="/about">عن الموقع</a>
                 
-                <a href="http://pororom.com/blog/">المدونة</a>
-                <a href="#">ابدا البيع</a>
+                <a href="/blog">المدونة</a>
+                @if(\Auth::check())
+                @if(\Auth::user()->is_provider == 1)
+                <a href="http://provider.pororom.com/?token={{$encrypted}}">ابدا البيع</a>
+                @else
+                <a href="/contact">اطلب حساب تاجر</a>
+                @endif
+                @else
+                <a href="/login">ابدا البيع</a>
+                @endif
                 
 
             </div>
@@ -121,13 +149,14 @@
             </div>
             <div class="top-searches hidden-md hidden-lg pull-right">
               <span class="notify notify-left">{{$cart_onfly}}</span>
-            	<img alt="Kute Shop" src="{{ asset('images/top-searches.png') }}" />
+            	<img alt="ابحث" src="{{ asset('images/top-searches.png') }}" />
               <br/>
-              <div class="new-cart" style=" border: 1px solid #eae9e9;
+              
+              <div class="new-cart mobile_cart" style=" border: 1px solid #eae9e9;
 margin-left: 10px;
 /* margin-right: -5px; */
 border-radius: 3px;
-height: 34px;
+
 background: #fff;
 width: 200px;
 position: absolute;
@@ -135,12 +164,13 @@ left: 39px;
 top: 50px;
 z-index: 99999999999;
 display: none;
-" ></div>
+" >
+@include('layouts.cart2')
+</div>
             	<input type="text" placeholder="ابحث عن منتج"  onkeypress="return move2(event, this);" id="keyword2" name="keyword2"  style="display:none;">
             </div>
             
-            
-<?php //phpinfo();?>            
+                    
             
             
             <div id="user-info-top" class="user-info pull-right">
@@ -156,37 +186,30 @@ display: none;
 
                     <ul class="dropdown-menu mega_dropdown" role="menu">
                         @if(!\Auth::check())
-                        <li><a href="#" onclick="document.location='/login';">تسجيل الدخول</a></li>
+                        <li onclick="document.location='/login';"><a href="/login" onclick="document.location='/login';">تسجيل الدخول</a></li>
                         @else
-                        <li><a style="direction: rtl;" href="#" onclick="document.location='/profile';">تفاصيل الحساب ({{ \Auth::user()->fname }})</a></li>
+                        <li onclick="document.location='/profile';"><a style="direction: rtl;" href="/profile" onclick="document.location='/profile';">تفاصيل الحساب ({{ \Auth::user()->fname }})</a></li>
 <?php
 
-$token['session_id'] = \Session::getId();
-$token['user_id'] = \Auth::user()->id;
-$json_token = json_encode($token);
 
-$tokens = \Session::getId() . "---" . \Auth::user()->id;
-//$key = 'MahmoudandDwidar';
-
-//To Encrypt:
-//$encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $tokens, MCRYPT_MODE_ECB);
-$encrypted = base64_encode($json_token);
-$dec = json_decode(base64_decode($encrypted), true);
 //print_r($dec);
 //die($encrypted);
 
 
 ?>
-                        <li><a href="#" onclick="document.location='http://provider.pororom.com/?token={{$encrypted}}';">بيع منتجاتك</a></li>
+						@if(\Auth::check())
+						@if(\Auth::user()->is_provider)
+                        <li onclick="document.location='http://provider.pororom.com/?token={{$encrypted}}';"><a href="http://provider.pororom.com/?token={{$encrypted}}" onclick="document.location='http://provider.pororom.com/?token={{$encrypted}}';">بيع منتجاتك</a></li>
+						@endif
+						@endif
 
-
-<li><a style="direction: rtl;" href="#" onclick="document.location='/myOrders';">قائمة المشتريات</a></li>
-                        <li><a style="direction: rtl;" href="#" onclick="document.location='/myAddress';">عناوين الشحن</a></li>
+<li><a style="direction: rtl;" href="/myOrders" onclick="document.location='/myOrders';">قائمة المشتريات</a></li>
+                        <li><a style="direction: rtl;" href="/myAddress" onclick="document.location='/myAddress';">عناوين الشحن</a></li>
                         @endif
-                        <li><a href="#" onclick="document.location='/compare';">مقارنة المنتجات</a></li>
-                        <li><a href="#" onclick="document.location='/wishlist';">قائمة التمنيات</a></li>
+                        <li onclick="document.location='/compare';"><a href="/compare" onclick="document.location='/compare';">مقارنة المنتجات</a></li>
+                        <li onclick="document.location='/wishlist';"><a href="/wishlist" onclick="document.location='/wishlist';">قائمة التمنيات</a></li>
                         @if(\Auth::check())
-                          <li><a href="#" onclick="document.location='/logout';">تسجيل الخروج</a></li>
+                          <li onclick="document.location='/logout';"><a href="/logout" onclick="document.location='/logout';">تسجيل الخروج</a></li>
                         @endif
                     </ul>
                 </div>
@@ -233,13 +256,14 @@ $dec = json_decode(base64_decode($encrypted), true);
 // Arrange the search URL and go to it
     function search2() {
         var keyword = $("#keyword2").val();
+        keyword = keyword.replace(/\#/g, '');
         if (keyword == ""){
             alert("من فضلك ادخل كلمة للبحث عنها");
             return false;
         }else{
             return location.href = '/search/' + keyword;
            }
-           alert('sss');
+           
            return false;
     }
     
@@ -253,13 +277,15 @@ $dec = json_decode(base64_decode($encrypted), true);
 // Arrange the search URL and go to it
     function search() {
         var keyword = $("#keyword").val();
+        keyword = keyword.replace(/\#/g, '');
         if (keyword == ""){
             alert("من فضلك ادخل كلمة للبحث عنها");
             return false;
         }else{
+        	
             return location.href = '/search/' + keyword;
            }
-           alert('sss');
+           
            return false;
     }
 

@@ -7,11 +7,12 @@
     <div class="container" id="columns">
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
-            <a class="home" href="#" title="Return to Home">Home</a>
+            <a class="home" href="#" title="Return to Home">بوروروم</a>
             <span class="navigation-pipe">&nbsp;</span>
-            <span class="navigation_page">About Us</span>
+            <span class="navigation_page">{{ $about->title_ar }}</span>
         </div>
         <!-- ./breadcrumb -->
+        
         <!-- row -->
         <div class="row">
             <!-- Left colunm -->
@@ -30,6 +31,8 @@
                                     <li @if(\Request::route()->getName() == "terms") class="active"@endif><span></span><a href="/terms">الشروط والاحكام</a></li>
                                     <li @if(\Request::route()->getName() == "returns") class="active"@endif><span></span><a href="/returns">سياسة الاسترجاع</a></li>
                                     <li @if(\Request::route()->getName() == "careers") class="active"@endif><span></span><a href="/careers">وظائف متاحة</a></li>
+                                    <li @if(\Request::route()->getName() == "sellers_rules") class="active"@endif><span></span><a href="/sellers_rules">شروط واحكام البائع</a></li>
+                                    <li @if(\Request::route()->getName() == "selling_fees") class="active"@endif><span></span><a href="/selling_fees">رسوم البيع</a></li>
                                     <li @if(\Request::route()->getName() == "contact") class="active"@endif><span></span><a href="/contact">اتصل بنا</a></li>
                                     <!--<li><span></span><a href="/FAQ">FAQ</a></li>
                                     <li><span></span><a href="#">Site Map</a></li>-->
